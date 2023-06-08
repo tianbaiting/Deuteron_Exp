@@ -16,7 +16,7 @@ TCATANACsISimParameter::TCATANACsISimParameter(TString name)
 TCATANACsISimParameter::~TCATANACsISimParameter(){;}
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-std::ostream& operator<<(ostream& out, const TCATANACsISimParameter& prm)
+std::ostream& operator<<(std::ostream& out, const TCATANACsISimParameter& prm)
 {
   out << prm.GetName() << ": "
       << " Layer=" << prm.fLayer

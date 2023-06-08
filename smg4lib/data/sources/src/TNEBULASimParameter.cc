@@ -32,7 +32,7 @@ TDetectorSimParameter*  TNEBULASimParameter::FindDetectorSimParameter(Int_t id)
   return &(it->second);
 }
 //____________________________________________________________________
-std::ostream& operator<<(ostream& out,  const TNEBULASimParameter& prm)
+std::ostream& operator<<(std::ostream& out,  const TNEBULASimParameter& prm)
 {
   out << prm.GetName() <<": "
       << "fIsLoaded="       <<prm.fIsLoaded <<" "

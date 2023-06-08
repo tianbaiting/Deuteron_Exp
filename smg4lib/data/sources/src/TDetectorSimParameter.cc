@@ -11,7 +11,7 @@ TDetectorSimParameter::TDetectorSimParameter(TString name)
 TDetectorSimParameter::~TDetectorSimParameter()
 {;}
 //____________________________________________________________________
-std::ostream& operator<<(ostream& out,  const TDetectorSimParameter& prm)
+std::ostream& operator<<(std::ostream& out,  const TDetectorSimParameter& prm)
 {
   out << prm.GetName() <<": "
       << "fPosition=" <<prm.fPosition.x()<<" "<<prm.fPosition.y()<<" "<<prm.fPosition.z()<<" "

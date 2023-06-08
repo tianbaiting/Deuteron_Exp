@@ -16,7 +16,7 @@ TDALINaISimParameter::TDALINaISimParameter(TString name)
 TDALINaISimParameter::~TDALINaISimParameter()
 {;}
 //____________________________________________________________________
-std::ostream& operator<<(ostream& out,  const TDALINaISimParameter& prm)
+std::ostream& operator<<(std::ostream& out,  const TDALINaISimParameter& prm)
 {
   out << prm.GetName() <<": "
       << "fLayer=" <<prm.fLayer<<" "

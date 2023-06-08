@@ -19,7 +19,7 @@ public:
   TBeamSimData(Int_t z, Int_t a, TLorentzVector mom, TVector3 pos);
   virtual ~TBeamSimData();
 
-  friend ostream& operator<<(ostream& out,  const TBeamSimData& beamSimData);
+  friend std::ostream& operator<<(std::ostream& out,  const TBeamSimData& beamSimData);
 
 public:
   Int_t          fPrimaryParticleID;//     for output

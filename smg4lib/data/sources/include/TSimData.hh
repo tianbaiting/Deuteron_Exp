@@ -13,7 +13,7 @@ public:
   TSimData();
   virtual ~TSimData();
 
-  friend ostream& operator<<(ostream& out,  const TSimData& fragSimData);
+  friend std::ostream& operator<<(std::ostream& out,  const TSimData& fragSimData);
 
 public:
   //Int_t          fPrimaryParticleID;// modified from smsimulator4.3

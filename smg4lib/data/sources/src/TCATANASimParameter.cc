@@ -27,7 +27,7 @@ TCATANACsISimParameter* TCATANASimParameter::FindCATANACsISimParameter(Int_t id)
 }
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-std::ostream& operator<<(ostream& out, const TCATANASimParameter& prm)
+std::ostream& operator<<(std::ostream& out, const TCATANASimParameter& prm)
 {
   out << prm.GetName() <<": "
       << "fIsLoaded=" << prm.fIsLoaded << " "

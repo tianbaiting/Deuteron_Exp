@@ -16,7 +16,7 @@ public:
   TDetectorSimParameter *FindDetectorSimParameter(Int_t id);
 
   virtual void Print(Option_t* option="") const;// interited from TNamed
-  friend ostream& operator<<(ostream& out,  const TNeuLANDSimParameter& prm);
+  friend std::ostream& operator<<(std::ostream& out,  const TNeuLANDSimParameter& prm);
 
 
 public:

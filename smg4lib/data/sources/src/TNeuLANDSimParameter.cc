@@ -32,7 +32,7 @@ TDetectorSimParameter*  TNeuLANDSimParameter::FindDetectorSimParameter(Int_t id)
   return &(it->second);
 }
 //____________________________________________________________________
-std::ostream& operator<<(ostream& out,  const TNeuLANDSimParameter& prm)
+std::ostream& operator<<(std::ostream& out,  const TNeuLANDSimParameter& prm)
 {
   out << prm.GetName() <<": "
       << "fIsLoaded="       <<prm.fIsLoaded <<" "

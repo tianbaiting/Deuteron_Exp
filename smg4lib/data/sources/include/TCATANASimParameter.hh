@@ -18,7 +18,7 @@ public:
   TCATANACsISimParameter *FindCATANACsISimParameter(Int_t id);
 
   virtual void Print(Option_t *option="") const;
-  friend ostream& operator<<(ostream& out, const TCATANASimParameter& prm);
+  friend std::ostream& operator<<(std::ostream& out, const TCATANASimParameter& prm);
 
 public:
   Bool_t fIsLoaded;

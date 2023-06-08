@@ -144,7 +144,7 @@ G4VPhysicalVolume* CATANAConstruction::Construct(){
 					       0,
 					       false,
 					       0);
-  LogicWorld->SetVisAttributes(G4VisAttributes::Invisible);
+  LogicWorld->SetVisAttributes(G4VisAttributes::GetInvisible());
 
   ConstructSub();
   PutCATANA(LogicWorld);

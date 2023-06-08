@@ -12,7 +12,7 @@ public:
   TDetectorSimParameter(TString name="");
   virtual ~TDetectorSimParameter();
   virtual void Print(Option_t* option="") const;// interited from TNamed
-  friend ostream& operator<<(ostream& out,  const TDetectorSimParameter& prm);
+  friend std::ostream& operator<<(std::ostream& out,  const TDetectorSimParameter& prm);
 
 public:
   Int_t    fID;

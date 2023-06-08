@@ -17,7 +17,7 @@ public:
   TDALINaISimParameter *FindDALINaISimParameter(Int_t id);
 
   virtual void Print(Option_t* option="") const;// interited from TNamed
-  friend ostream& operator<<(ostream& out,  const TDALISimParameter& prm);
+  friend std::ostream& operator<<(std::ostream& out,  const TDALISimParameter& prm);
 
 
 public:

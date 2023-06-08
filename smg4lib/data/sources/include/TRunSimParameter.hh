@@ -13,7 +13,7 @@ public:
   TRunSimParameter(TString name="RunParameter");
   virtual ~TRunSimParameter();
   virtual void Print(Option_t* option="") const;// interited from TNamed
-  friend ostream& operator<<(ostream& out,  const TRunSimParameter& prm);
+  friend std::ostream& operator<<(std::ostream& out,  const TRunSimParameter& prm);
 
   void SetTreeName(TString name){fTreeName = name;}
   void AppendHeader(TString str){fHeader += " " + str;}

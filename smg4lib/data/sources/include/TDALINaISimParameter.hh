@@ -13,7 +13,7 @@ public:
   TDALINaISimParameter(TString name="");
   virtual ~TDALINaISimParameter();
   virtual void Print(Option_t* option="") const;// interited from TNamed
-  friend ostream& operator<<(ostream& out,  const TDALINaISimParameter& prm);
+  friend std::ostream& operator<<(std::ostream& out,  const TDALINaISimParameter& prm);
 
 public:
   Int_t    fID;

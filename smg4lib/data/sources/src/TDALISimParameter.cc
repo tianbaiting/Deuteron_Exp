@@ -28,7 +28,7 @@ TDALINaISimParameter*  TDALISimParameter::FindDALINaISimParameter(Int_t id)
   return it->second;
 }
 //____________________________________________________________________
-std::ostream& operator<<(ostream& out,  const TDALISimParameter& prm)
+std::ostream& operator<<(std::ostream& out,  const TDALISimParameter& prm)
 {
   out << prm.GetName() <<": "
       << "fIsLoaded="       <<prm.fIsLoaded <<" "

@@ -82,7 +82,7 @@ G4VPhysicalVolume* NEBULAConstruction::Construct()
 					       0,
 					       false,
 					       0);
-  LogicWorld->SetVisAttributes(G4VisAttributes::Invisible);
+  LogicWorld->SetVisAttributes(G4VisAttributes::GetInvisible());
   //-------------------------------------------------------
   // NEBULA
   ConstructSub();
