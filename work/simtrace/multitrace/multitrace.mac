@@ -1,0 +1,48 @@
+#/vis/open OGLIX
+#/vis/open VRML2FILE
+/vis/open DAWNFILE
+
+# Z-X view
+/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+#zoom
+/vis/viewer/zoom 1
+
+/samurai/geometry/Dipole/Angle 30 deg
+#
+/samurai/geometry/Dipole/FieldFile ../field_map/141114-2,9T-3000.bin
+/samurai/geometry/Dipole/FieldFactor 1.0
+
+# FDC2 @ Exit window center
+/samurai/geometry/FDC2/Position 0 0 4000 mm
+/samurai/geometry/HOD/Position 0 0 5000 mm
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+/action/file/RunName multitrace_out_
+/action/file/SaveDirectory multitrace/
+/action/file/OverWrite y
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/scene/add/axes 0 0 0 5000 mm
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+
+
+/action/file/OverWrite y
+
+#/tracking/verbose 1
+
+/action/gun/Type Tree
+/action/gun/tree/InputFileName multitrace/input.root
+/action/gun/tree/TreeName tree_input
+/action/gun/tree/beamOn 0

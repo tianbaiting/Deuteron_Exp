@@ -1,0 +1,12 @@
+/control/execute g4mac/SourceRunConfig.mac
+
+/action/file/RunName Source1.836MeV_
+/action/file/SaveDirectory ./rootfiles/GammaSource/
+/action/file/OverWrite y
+
+/action/gun/Type Tree
+/action/gun/tree/InputFileName rootfiles/input/GammaSource1.836MeV.root
+/action/gun/tree/TreeName tree_input
+
+/action/gun/tree/beamOn 0
+#/action/gun/tree/beamOn 1000

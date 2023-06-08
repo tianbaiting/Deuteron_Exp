@@ -1,0 +1,53 @@
+#/vis/open OGLIX
+#/vis/open VRML2FILE
+/vis/open DAWNFILE
+
+# Z-X view
+/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+#zoom
+/vis/viewer/zoom 4
+
+/samurai/geometry/Dipole/Angle 30 deg
+
+/samurai/geometry/Dipole/FieldFile /home/kondo/exp/samurai21/geant4/smsimulator/smsimulator/work/sim_samurai21/field_map/141114-2,9T-3000.bin
+/samurai/geometry/Dipole/FieldFactor 1.0
+
+/samurai/geometry/NEBULA/ParameterFileName geometry/NEBULA_samurai21.csv
+/samurai/geometry/NEBULA/DetectorParameterFileName geometry/NEBULA_Detectors_samurai21.csv
+
+/samurai/geometry/NeuLAND/ParameterFileName geometry/NeuLAND_samurai21.csv
+/samurai/geometry/NeuLAND/DetectorParameterFileName geometry/NeuLAND_Detectors_samurai21.csv
+
+
+/samurai/geometry/Target/Position 0 0 -4367 mm
+/samurai/geometry/FDC2/Position 496.715 0 4128.48 mm
+/samurai/geometry/HODF24/Position 496.715 0 4866.48 mm
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+
+/action/file/OverWrite y
+
+/action/gun/Position 0 0 -4367 mm
+
+/action/gun/Type Pencil
+/action/gun/Z 9
+/action/gun/A 29
+/action/gun/SetBeamParticle
+/action/gun/Brho 7.5 Tm
+
+/tracking/verbose 1
+/run/beamOn 1

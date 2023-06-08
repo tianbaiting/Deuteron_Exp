@@ -1,0 +1,66 @@
+/samurai/geometry/Dipole/Angle 30 deg
+/samurai/geometry/Dipole/FieldFile ../field_map/2,6750T445,93A.bin
+
+/dali/ParameterFileName         geometry/DALI_tm1510.csv
+/dali/DetectorParameterFileName geometry/DALI_Detectors_tm1510.csv
+/dali/ResolutionFileName        geometry/DALI_Resolution_samurai21.csv
+
+/samurai/geometry/NeuLAND/ParameterFileName         geometry/NeuLAND_samurai21.csv
+/samurai/geometry/NeuLAND/DetectorParameterFileName geometry/NeuLAND_Detectors_samurai21.csv
+
+/samurai/geometry/NEBULA/ParameterFileName         geometry/NEBULA_samurai21.csv
+/samurai/geometry/NEBULA/DetectorParameterFileName geometry/NEBULA_Detectors_samurai21.csv
+
+/samurai/geometry/Target/Position 0.0  0 -4139    mm
+/samurai/geometry/FDC2/Position  -3.19 0  4126.92 mm
+/samurai/geometry/ICF/Position    0.0  0  5106.92 mm
+/samurai/geometry/HODS/Position  -3.55 0  5791.92 mm
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+########################
+## visualization
+########################
+#/vis/open OGLIX
+/vis/open VRML2FILE
+#/vis/open DAWNFILE
+
+# Z-X view
+#/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+# side view for charged particle window
+#/vis/viewer/set/viewpointThetaPhi 30. 210.
+
+#zoom
+/vis/viewer/zoom 1.5
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+########################
+########################
+
+/action/cut/gamma 0.1 mm
+/action/cut/electron 0.1 mm
+/action/cut/positron 0.1 mm
+
+/action/file/RunName example_isotropic_
+/action/file/SaveDirectory root/examples/
+/action/file/OverWrite y
+
+/action/gun/Type Isotropic
+/action/gun/Position 0 0 -4100 mm
+/action/gun/SetBeamParticleName gamma
+/action/gun/Energy 1 MeV
+
+#/run/beamOn 1
+/run/beamOn 10000

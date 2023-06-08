@@ -1,0 +1,40 @@
+/samurai/geometry/Dipole/Angle 30 deg
+/samurai/geometry/Dipole/FieldFile ../field_map/141114-2,9T-3000.bin
+#/samurai/geometry/Dipole/FieldFile ../field_map/141114-2,9T-3000.table
+/samurai/geometry/Dipole/FieldFactor 1.0
+
+/samurai/geometry/FDC2/Position 0 0 4000 mm
+/samurai/geometry/HOD/Position 0 0 5000 mm
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+#######################
+# visualization
+#######################
+#/vis/open OGLIX
+/vis/open VRML2FILE
+#/vis/open DAWNFILE
+# Z-X view
+/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+#######################
+#######################
+
+/action/file/OverWrite y
+
+/action/gun/Type Pencil
+/action/gun/Z 8
+/action/gun/A 24
+/action/gun/SetBeamParticle
+/action/gun/Energy 200 MeV

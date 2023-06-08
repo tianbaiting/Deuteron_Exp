@@ -1,0 +1,52 @@
+/dali/ParameterFileName         geometry/DALI_samurai21.csv
+/dali/DetectorParameterFileName geometry/DALI_Detectors_samurai21.csv
+/dali/ResolutionFileName        geometry/DALI_Resolution_samurai21.csv
+
+# for source runs
+#/minos/FillTargetLH2 false
+#/minos/PutExitCap    true
+#/samurai/geometry/PutGammaSource  true
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+#######################
+# visualization
+#######################
+#/vis/open OGLIX
+/vis/open VRML2FILE
+#/vis/open DAWNFILE
+
+# Z-X view
+#/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+# side view for charged particle window
+#/vis/viewer/set/viewpointThetaPhi 30. 210.
+
+#zoom
+/vis/viewer/zoom 1.5
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+#######################
+#######################
+
+/action/file/OverWrite y
+
+/action/gun/Type Isotropic
+/action/gun/Position 0 0 0 mm
+/action/gun/SetBeamParticleName gamma
+/action/gun/Energy 1 MeV
+
+#/tracking/verbose 1
+
+#/run/beamOn 1

@@ -1,0 +1,3547 @@
+tree->Draw("fdc1y:fdc1x>>h")
+tree_input->Draw("fdc1y:fdc1x>>h")
+ls
+ht 1
+hn
+tree_input->Draw("fdc2y:fdc2x>>h")
+hdel 2
+tree_input->Draw("fdc2y:fdc2x>>h")
+ht
+ht 2
+tree_input->Draw("fdc1x:fdc2x>>h")
+hdel 1
+hdel 1
+tree_input->Draw("fdc1x:fdc2x>>h")
+ht
+tree_input->Draw("fdc1a:fdc2x>>h")
+ht 1
+tree_input->Draw("fdc1a:fdc2a>>h")
+hdel 1
+tree_input->Draw("fdc1a:fdc2a>>h")
+ht
+.q
+TFile *_file0 = TFile::Open("root/input/input_run0466.root")
+tree_input->Print()
+tree_input->Draw("TBeamSimData.fEnergy")
+tree_input->Draw("TBeamSimData.fKineticEnergy")
+tree_input->Draw("TBeamSimData.fMomentum.fX")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fX")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fY")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ")
+.q
+.ls
+.L macros/generator/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ")
+lgy
+lny
+tree_input->Draw("TBeamSimData.fMomentum.fP.fX")
+lgy
+lny
+tree_input->Draw("TBeamSimData.fMomentum.fP.fY")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ>>hh(200,0,20000)")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ>>hh(200,0,200000)")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ>>hh(200,0,30000)")
+lgy
+lny
+700*29
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ>>hh(200,20000,30000)")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ>>hh(200,20000,21000)")
+lgy
+lny
+.q
+TFile *_file0 = TFile::Open("root/input/input_run0466.root")
+tree->Print()
+tree_input->Print()
+.q
+.L macros/generator/GenInputFromRIDF.cc+g
+.L macros/generator/GenInputFromRIDF.cc+g
+.L macros/generator/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+.q
+.L macros/generator/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+.ls
+tree_input->Draw("fdc2x:brho>>hh")
+tree_input->Draw("fdc2x:brho>>hh","","colz")
+.q
+TFile *_file0 = TFile::Open("root/brho_func/run0466_0000.root")
+.ls
+tree->PRint()
+tree->Print()
+tree->Draw("fragment.fPrePosition.fX")
+tree->Draw("fragment.fPrePosition.fX:fragment.fPrePosition.fZ>>hh")
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+.q
+.x macros/brho_func/calc_fdc2pos.cc
+.x macros/brho_func/calc_fdc2pos.cc+g
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+.ls
+tree->Print()
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+.ls
+tree->Print()
+tree->Draw("fdc2xsim")
+tree->Draw("fdc2asim:fdc2xsim>>hh")
+tree->Draw("fdc2asim:fdc2xsim>>hh","","colz")
+tree->Draw("fdc2bsim:fdc2ysim>>hh","","colz")
+tree->Draw("fdc2bsim:fdc2ysim>>h","","colz")
+.q
+.x macros/brho_func/chksim.cc
+.q
+.x macros/brho_func/chksim.cc
+.ls
+tree->Print()
+.q
+.x macros/brho_func/chksim.cc
+.! ls root/brho_func/
+.x macros/brho_func/chksim.cc
+.ls
+.pwd
+.ls
+.q
+.q
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_run0466.root")
+.ls
+tree_input->AddFriend("tree","root/brho_func/analyzed.root")
+.ls
+tree_input->Print()
+tree_input->Draw("fdc2x:fdc2xsim>>hh")
+tree_input->Draw("fdc2x-fdc2xsim>>hh()")
+tree_input->Draw("fdc2x-fdc2xsim>>hh(200,-100,100)")
+ls
+ht 1
+figa
+ht
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_run0466.root")
+.q
+.x macros/brho_func/chksim.cc
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+sh
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 5
+hn
+hn
+hn
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 8
+hb
+hn
+ls
+ht 5
+hb
+hb
+hb
+hb
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/chksim.cc
+ls
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 7
+figa
+hn
+figa
+hn
+figa
+hn
+figa
+ls
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 7
+figa
+hn
+figa
+hn
+figa
+hn
+figa
+ls
+zon 2 2;hht 7;hn;hn;hn
+print "temp.ps"
+.! lpr temp.ps
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+.L macros/brho_func/calc_fdc2pos.cc+g
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+.x macros/brho_func/chksim.cc
+ls
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 7
+hn
+sh
+ht 1
+sh
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+hn
+hb
+hn
+hb
+hn
+hb
+hn
+hn
+hn
+hn
+hn
+hn
+hb
+ls
+zon 2 2;hht 1;hn
+zon 2 2;hht 1;hn;hn;hn
+zon 2 2;hht 1;hn;ht 17
+zon 2 2;hht 1;hn;ht 17;hn
+lnz
+zon 3 3;hht 1;hn;ht 17;hn;hn;hn
+lnz
+.x macros/brho_func/chksim.cc
+zon 3 3;hht 1;hn;ht 17;hn;hn;hn
+zon 3 3;hht 1;hn;hn;hn;hn;hn;ht 17;hn;hn;hn
+zon 3 3;hht 1;hn;hn;hn;hn;hn;ht 17;hn
+.x macros/brho_func/chksim.cc
+zon 3 3;hht 1;hn;hn;hn;hn;hn;ht 17;hn
+.x macros/brho_func/chksim.cc
+zon 3 3;hht 1;hn;hn;hn;hn;hn;ht 17;hn
+.x macros/brho_func/chksim.cc
+zon 3 3;hht 1;hn;hn;hn;hn;hn;ht 17;hn
+zon 3 3;hht 1;hn;hn;hn;hn;hn;ht 17;hn
+ls
+.q
+.L macros/brho_func/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+ls
+ht 1
+sh
+.q
+.L macros/brho_func/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+.x macros/brho_func/chksim.cc(466)
+ls
+ht 1
+sh
+figa
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos(486)
+.ls
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_run0486.root")
+.ls
+tree_input->Print()
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos(486)
+.x macros/brho_func/chksim.cc(486)
+sh
+figa
+hn
+figa
+hn
+sh
+ls
+ht 3
+hn
+hn
+hn
+hn
+.q
+.x macros/brho_func/chksim.cc(486)
+sh
+hb
+.q
+.x macros/brho_func/chksim.cc(486)
+sh
+sh
+.q
+.x macros/brho_func/chksim.cc(486)
+sh
+ls
+ht 1
+sh
+ls
+ht 20
+.q
+.L macros/brho_func/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos(486)
+.x macros/brho_func/chksim.cc(486)
+sh
+prx
+figa
+hb
+pry
+figa
+hn
+hn
+hn
+hn
+hn
+sh
+figa
+hn
+figa
+hn
+figa
+ls
+hn
+figa
+ls
+hb
+hb
+hb
+ls
+zon 3 3 ;hht 1;hn;ht 11;hn;hn;hn;hn
+zon 3 3 ;hht 1;hn;ht 15;hn;hn;hn;hn
+zon 3 3 ;hht 1;hn;ht 15;hn;hn;hn
+ls
+ht 20
+zon
+ht
+433*12/(248448*2*0.6*0.3)
+433.*12/(248448*2*0.6*0.3)
+58./200
+433/248448/200*12/1.8/0.6/0.3
+433./248448/200*12/1.8/0.6/0.3
+58./200
+313./248448/200*12/1.8/0.6/0.3
+.x macros/brho_func/chksim.cc(486)
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+ht 20
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+ht 
+ht 3
+.ls
+tree_input->Draw("fdc1a")
+lgy
+tree_input->Draw("fdc1a>>hh(200,-100,100)")
+lgy
+.L macros/brho_func/GenInput.cc+g
+.L macros/brho_func/GenInput.cc+g
+.L macros/brho_func/GenInput.cc+g
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+ls
+tree_input->Draw("fdc1x")
+tree_input->Draw("fdc1a")
+tree_input->Draw("fdc1y")
+tree_input->Draw("fdc1b")
+tree_input->Draw("brho")
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+tree_input->Draw("brho")
+tree_input->Draw("fdc1x")
+tree_input->Draw("fdc1x:fdc1a>>hh")
+d.q
+d.q
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+tree_input->Draw("fdc1x:fdc1a>>hh")
+tree_input->Draw("fdc1x:fdc1a>>hh","","colz")
+tree_input->Draw("fdc1x:brho>>hh","","colz")
+hdel 1
+tree_input->Draw("fdc1x:brho>>hh","","colz")
+ls
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+ls
+tree->PRint()
+tree->Print()
+tree->Draw("fdc2xsim")
+tree->Draw("fdc1xsim")
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+tree->Draw("fdc1xsim")
+.ls
+tree->Draw("fdc1x")
+tree->Draw("fdc2x:brho>>hh")
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/func_29f_0000.root")
+.ls
+tree->Print()
+.q
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.ls
+tree->Print()
+tree->Draw("fdc2x")
+tree->Draw("fdc2y:fdc2x>>h")
+ls
+ht 1
+tree->Draw("fdc1y:fdc2x>>h")
+tree->Draw("fdc1x:fdc2x>>h")
+ht
+ls
+tree->Draw("fdc1x:fdc2a>>h")
+tree->Draw("fdc1a:fdc2a>>h")
+ht
+hdel 1
+hdel 1 100
+tree->Draw("fdc1a:fdc2a>>h")
+ht
+.q
+.x macros/brho_func/chksim_func.cc
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+.ls
+tree_input->Draw("brho")
+tree_input->Draw("brho:fdc2x>>h")
+ls
+ht 21
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_A29Z9.root")
+.ls
+tree->PRint()
+tree_input->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.x macros/brho_func/chksim_func.cc
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.x macros/brho_func/chksim_func.cc
+.x macros/brho_func/chksim_func.cc
+.x macros/brho_func/chksim_func.cc
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+ht 1
+hn
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+.q
+.ls
+.q
+TFile *_file0 = TFile::Open("root/brho_func/func_29f_0000.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/func_29f_0000.root")
+tree->Print()
+tree->Draw("fragment.fFlightLength")
+lgy
+tree->Draw("fragment.fFlightLength:fragment.fX")
+tree->Draw("fragment.fFlightLength:fragment.fPrePosition.fX>>h")
+ls
+ht 1
+lny
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+ls
+tree->Print()
+tree->Draw("fl")
+tree->Draw("tof")
+tree->Draw("brho")
+tree->Draw("fdc2x")
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+tree->Draw("tof")
+tree->Draw("fl")
+tree->Draw("fl:fdc2x>>h")
+ls
+ht 1
+tree->Draw("fl:brho>>h")
+hdel 1
+tree->Draw("fl:brho>>h")
+ht
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+tree->Draw("fl:brho>>h")
+ls
+ht 1
+ls
+tree->Draw("tof:brho>>h")
+hdel 1
+tree->Draw("tof:brho>>h")
+ht
+tree->Draw("tof:brho>>h","fabs(fdc2a)<10")
+tree->Draw("tof:brho>>h","fabs(fdc2a)<20")
+tree->Draw("tof:brho>>h","fabs(fdc2a)<50")
+tree->Draw("tof:brho>>h","fabs(fdc2x)<50")
+tree->Draw("tof:brho>>h","fabs(fdc2x)<100")
+tree->Draw("tof:brho>>h","fabs(fdc2x)>100")
+ht
+tree->Draw("tof:brho>>h","fabs(fdc2x)>10")
+ht
+tree->Draw("tof:brho>>h","fabs(fdc2x)>140")
+ht
+tree->Draw("tof:brho>>h","fabs(fdc2y)>140")
+ht
+tree->Draw("tof:brho>>h","fabs(fdc2b)>140")
+ht
+tree->Draw("tof:brho>>h","fabs(fdc2b)>40")
+ht
+tree->Draw("tof:fdc2x>>h")
+ht
+tree->Draw("tof:fdc1x>>h")
+ht
+hdel 1
+ht
+tree->Draw("tof:fdc1x>>h")
+ht
+tree->Draw("tof:fdc1a>>h")
+ht
+tree->Draw("tof:fdc1y>>h")
+ht
+tree->Draw("tof:fdc1b>>h")
+ht
+.q
+TFile *_file0 = TFile::Open("root/brho_func/func_29f_0000.root")
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.ls
+tree->Draw("tof:fdc1b>>h")
+tree->Draw("fl>>h")
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+tree->Draw("fl>>h")
+tree->Draw("fdc1x>>h")
+ht 1
+hdel 1
+ht 1
+tree->Draw("fdc1x>>h")
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+tree->Draw("fdc1x>>h")
+tree->Draw("fdc2x>>h")
+tree->Draw("fdc2x")
+tree->Draw("tgtx")
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+tree->Draw("tgtx")
+tree->Draw("tgta")
+tree->Draw("tgty")
+tree->Draw("tgtb")
+tree->Draw("fdc1x")
+tree->Draw("fdc1a")
+tree->Draw("fdc2a")
+tree->Draw("fl")
+lgy
+lny
+tree->Draw("fl:fdc2x>>h")
+ht
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+ls
+.q
+.x macros/brho_func/fit_brho.cc
+.x macros/brho_func/fit_brho.cc
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+.ls
+tree->Print()
+tree->Draw("fdc1x")
+tree->Draw("fdc1x:brho_fun")
+tree->Draw("fdc1x:brho_fun>>h")
+.q
+TFile *_file0 = TFile::Open("root/brho_func/fit_brho_out.root")
+tree->Draw("fdc1x:brho_fun>>h")
+ls
+ht 1
+tree->Draw("brho_fun:fdc2x>>h")
+hdel 1
+tree->Draw("brho_fun:fdc2x>>h")
+ls
+ht
+tree->Draw("brho:fdc2x>>h2")
+ht 1
+ht
+hn
+tree->Draw("brho-brho_fun:fdc2x>>h2")
+hdel 1 2
+tree->Draw("brho-brho_fun:fdc2x>>h2")
+ls
+ht
+lnz
+tree->Draw("brho-brho_fun:brho>>h2")
+hdel 1
+tree->Draw("brho-brho_fun:brho>>h2")
+ht
+.q
+TFile *_file0 = TFile::Open("root/brho_func/fit_brho_out.root")
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+hn
+hn
+hn
+hn
+hb
+hb
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+lnz
+sh
+hb
+hb
+hb
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 6
+lnz
+sh
+hn
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+sh
+hn
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+sh
+.q
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+sh
+ht 1
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 2
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+hb
+hn
+hn
+hb
+hb
+hb
+hb
+hb
+hb
+sh
+lnz
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 6
+hb
+hn
+hb
+hb
+hn
+hb
+hb
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+hb
+hb
+hb
+hb
+hb
+hb
+hn
+hn
+hb
+hb
+hb
+hb
+hb
+hb
+hn
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+.q
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+lnz
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+hb
+.x macros/brho_func/fit_brho.cc
+ht 4
+hn
+hb
+hb
+.q
+.x macros/brho_func/fit_brho.cc
+ht 4
+hb
+hn
+hb
+hn
+hb
+hb
+hb
+ls
+tree->Print()
+tree->Draw("fdc2x")
+tree->Draw("fdc2y:fdc2x>>hh","","colz")
+tree->Draw("fdc2b:fdc2x>>hh","","colz")
+tree->Draw("fdc2a:fdc2x>>hh","","colz")
+tree->Draw("fdc1a:fdc2x>>hh","","colz")
+tree->Draw("fdc1x:fdc2x>>hh","","colz")
+tree->Draw("fdc1y:fdc2x>>hh","","colz")
+tree->Draw("fdc1b:fdc2x>>hh","","colz")
+tree->Draw("fdc2y:fdc2x>>hh","","colz")
+tree->Draw("fdc2y:fdc1x>>hh","","colz")
+tree->Draw("fdc2y:fdc1y>>hh","","colz")
+tree->Draw("fdc2y:fdc1b>>hh","","colz")
+tree->Draw("fdc2y:fdc1a>>hh","","colz")
+tree->Draw("fdc2y:fdc1x>>hh","","colz")
+tree->Draw("fdc2y:brho>>hh","","colz")
+hdel 1
+ls
+hdel 9
+tree->Draw("fdc2y:brho>>hh","","colz")
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.ls
+tree->Print()
+tree->Draw("fdc1x:fdc2x>>h")
+tree->Draw("fdc1x:fdc2x>>h","","colz")
+tree->Draw("brho:fdc2x>>h","","colz")
+hdel 1
+tree->Draw("brho:fdc2x>>h","","colz")
+tree->Draw("brho:fdc2x>>h","OK_FDC2","colz")
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+sh
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+hb
+hb
+hb
+hb
+hb
+hn
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+sh
+pry
+figa
+.q
+.x macros/brho_func/fit_brho.cc
+ht 5
+pry
+figa
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+lnz
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+lnz
+sh
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+lnz
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+lnz
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+ht 1
+sh
+lgy
+lny
+sh
+sh
+ls
+zon 3 3;hht 1;hn;hn;hn;hn;hn;hn
+zon 3 3;hht 1;hn;hn;hn;hn;hn;hn;hn
+zon 3 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+.q
+fetch "root/brho_func/fit_brho_out.root"
+ls
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+zon 4 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+ls
+.q
+.x macros/brho_func/fit_brho.cc
+ lgy
+lny
+ls
+ht 1
+zon 4 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+lnz
+.q
+.x macros/brho_func/fit_brho.cc
+zon 4 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+lnz
+.q
+.x macros/brho_func/chk_mdf.cc
+sh
+bny -400 400
+lgy
+figa
+lny
+sh
+bny -20 20
+figa
+lgy
+lny
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_tof.cc
+lgy
+lny
+sh
+.x macros/brho_func/fit_tof.cc
+ls
+ht 1
+zon 4 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+.x macros/brho_func/fit_tof.cc
+zon 4 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+lnz
+ls
+zon
+tree->Draw("fdc1a:fdc1x>>h")
+ls
+ht 11
+lnz
+lgz
+.q
+.x macros/brho_func/fit_fl.cc
+ls
+ht 1
+sh
+tree->Draw("brho:fdc2x>>hh")
+ls
+ht 11
+ht 6
+ht 4
+hn
+ht 2
+hn
+hb
+sh
+zon 4 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+lnz
+.q
+.x macros/brho_func/fit_tof.cc
+.q
+.x macros/brho_func/fit_tof.cc
+ls
+sh
+.q
+.q
+TFile *_file0 = TFile::Open("root/brho_func/func_29f_0527.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.ls
+tree->Print()
+tree->Draw("fdc1x:tof>>h")
+ht
+tree->Draw("tgta:fdc1a")
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree->Draw("tgta:fdc1a>>h")
+tree->Draw("tgta:fdc1a>>h","OK_FDC1")
+ls
+ht 1
+tree->Draw("tgtx:fdc1x>>h","OK_FDC1")
+hdel 1
+tree->Draw("tgtx:fdc1x>>h","OK_FDC1")
+ls
+ht 1
+tree->AddFriend("tree_input","root/brho_func/input_A29Z9.root")
+.ls
+tree->Print()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.x macros/brho_func/chk_mdf.cc
+.q
+.x macros/brho_func/chk_mdf.cc
+.ls
+.ls
+tree->Draw("tof:tof_fun>>h")
+tree->Draw("tof-tof_fun>>h")
+tree->Draw("tof-tof_fun:tof>>h")
+ls
+ht 1
+ht 11
+tree->Draw("tof-tof_fun:brho>>h")
+hdel 11
+tree->Draw("tof-tof_fun:brho>>h")
+ht
+ht 11
+tree->Draw("fl-fl_fun:brho>>h12")
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree->Draw("fl:brho>>h12")
+ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.x macros/brho_func/chk_mdf.cc
+tree->Draw("fl-fl_fun:brho>>h12")
+ls
+ht 11
+tree->Draw("fl:brho>>h12")
+hdel 11
+tree->Draw("fl:brho>>h12")
+ls
+ht 11
+ls
+ht 1
+sh
+q.
+.q
+.x  macros/brho_func/chksim
+.x  macros/brho_func/chksim.cc
+ls
+ht 
+sh
+sh
+.q
+.x  macros/brho_func/chksim.cc(486)
+sh
+hb
+hb
+hb
+hn
+hb
+hb
+hn
+hn
+lnz
+lgz
+sh
+hb
+hb
+hn
+hn
+hn
+lny
+lnz
+sh
+hb
+lnz
+lgz
+hn
+hn
+hn
+hb
+hb
+hb
+hb
+hn
+.q
+.x  macros/brho_func/chksim.cc()
+ls
+ht 10
+sh
+ls
+lnz
+ls
+hn
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+ls
+.q
+.q
+fetch "root/brho_func/chk_mdf.root"
+ls
+ht 1
+sh
+.q
+fetch "root/brho_func/analyzed_0486.root"
+s
+ls
+.ls
+ls
+.q
+fetch "root/brho_func/func_29f_0527.root"
+ls
+.s
+.q
+TFile *_file0 = TFile::Open("root/brho_func/run0466_0000.root")
+ls
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/run0466_0000.root")
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+hs
+sh
+figa
+ls
+ht 1
+sh
+.q
+.q
+TFile *_file0 = TFile::Open("root/brho_func/run0466_0000.root")
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+hn
+hb
+.q
+.x macros/brho_func/chksim.cc(486)
+ht 1
+sh
+ls
+ht 1
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_xy.png")
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_xy.png"
+hn
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_xysim.png"
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+figa
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_dx.png"
+hn
+figa
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_da.png"
+hn
+figa
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_daypng"
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_dy.png"
+hn
+fia
+iga
+figa
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_db.png"
+ls
+zon
+ht
+hb
+hb
+hb
+sh
+.q
+.x macros/brho_func/chksim.cc(466)
+ls
+ht 10
+n
+hn
+hn
+hn
+figa
+hn
+figa
+hn
+figa
+hn
+figa
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+ht 15
+hn
+figa
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+.ls
+tree_input->Print()
+.ls
+ls
+ht 1
+ls
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ls
+.q
+.x macros/brho_func/chk_mdf.cc
+ls
+.ls
+tree->Print()
+tree->Draw("fl:fdc2y")
+tree->Draw("fl:fdc2y","","colz")
+lnz
+tree->Draw("fl:fdc2b","","colz")
+tree->Draw("fl:fdc2x","","colz")
+tree->Draw("fl:fdc2a","","colz")
+tree->Draw("fl:fdc2x","","colz")
+tree->Draw("fl:fdc2y","","colz")
+tree->Draw("fl:fdc2y","fabs(fdc2b)1","colz")
+tree->Draw("fl:fdc2y","fabs(fdc1b)1","colz")
+tree->Draw("fl:fdc2y","fabs(fdc1b)<1","colz")
+tree->Draw("fl:fdc2y","fabs(fdc1b)<10","colz")
+tree->Draw("fl:fdc2y","fabs(fdc1b)<10&&fabs(fdc1a)<10","colz")
+tree->Draw("fl:fdc2y","fabs(fdc1b)<10","colz")
+tree->Draw("fl:fdc2y","fabs(fdc1y)<10","colz")
+tree->Draw("fl:fdc2b","fabs(fdc1y)<10","colz")
+tree->Draw("fl:fdc2b>>h","fabs(fdc1y)<10","colz")
+ls
+ht 11
+prx
+hb
+tree->Draw("fl:fdc2y>>h","fabs(fdc1y)<10","colz")
+hdel 11
+tree->Draw("fl:fdc2y>>h","fabs(fdc1y)<10","colz")
+tree->Draw("fl:fdc2x>>h","fabs(fdc1y)<10","colz")
+tree->Draw("fl:fdc2y>>h","fabs(fdc1y)<10","colz")
+tree->Draw("fl:fdc2b>>h","fabs(fdc1y)<10","colz")
+hdel 11
+tree->Draw("fl:fdc2b>>h","fabs(fdc1y)<10","colz")
+ls
+hdel 11
+tree->Draw("fl:fdc2b>>h","fabs(fdc1y)<10","colz")
+tree->Draw("fl:fdc2b>>h","fabs(tgty)<10","colz")
+.ls
+tree->Print()
+tree->Draw("fl:fdc2b>>h","","colz")
+tree->Draw("fl:fdc2b>>h","fabs(brho-7.5)<0.1","colz")
+tree->Draw("fl:fdc2b>>h","fabs(brho-7.5)<0.1&&fabs(fdc1a)<10","colz")
+tree->Draw("fl:fdc2b>>h","fabs(brho-7.5)<0.1&&fabs(fdc1a)<20","colz")
+tree->Draw("fl:fdc2b>>h","fabs(brho-7.5)<0.1&&fabs(fdc1a)<10","colz")
+tree->Draw("fl:fdc1a>>h","fabs(brho-7.5)<0.1&&fabs(fdc1a)<10","colz")
+tree->Draw("fl:fdc1a>>h","","colz")
+ls
+hdel 11
+tree->Draw("fl:fdc1a>>h","","colz")
+tree->Draw("fl:fdc1b>>h","","colz")
+tree->Draw("fl:fdc1x>>h","","colz")
+tree->Draw("fl:fdc1y>>h","","colz")
+tree->Draw("fl:fdc1a>>h","","colz")
+tree->Draw("fl-fl_fun:fdc1a>>h","","colz")
+hdel 11
+tree->Draw("fl-fl_fun:fdc1a>>h","","colz")
+tree->Draw("fl-fl_fun:fdc1x>>h","","colz")
+tree->Draw("fl-fl_fun:fdc2a>>h","","colz")
+hdel 11
+tree->Draw("fl-fl_fun:fdc2a>>h","","colz")
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_A29Z9.root")
+ls
+.ls
+tree_input->Print()
+tree_input->Draw("TBeamSimData.fMass")
+tree_input->Draw("TBeamSimData.fCharge")
+tree_input->Draw("TBeamSimData.fE")
+tree_input->Print()
+tree_input->Draw("TBeamSimData.fMomentum.fE")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-pow(TBeamSimData.fMomentum.fP)")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-pow(TBeamSimData.fMomentum.fP,2)")
+tree_input->Draw("TBeamSimData.fTime")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-pow(TBeamSimData.fMomentum.fP,2)")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fP,2)")
+tree_input->Draw("TBeamSimData.fMomentum.fP")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-pow(TBeamSimData.fMomentum.fP.fX,2)-pow(TBeamSimData.fMomentum.fP.fY,2)-pow(TBeamSimData.fMomentum.fP.fZ,2)")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-pow(TBeamSimData.fMomentum.fP.fX,2)-pow(TBeamSimData.fMomentum.fP.fY,2)-pow(TBeamSimData.fMomentum.fP.fZ,2)")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)")
+29*700
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2))")
+29*700
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2))")
+tree_input->Print()
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2))")
+tree_input->Draw("TBeamSimData.fMomentum.fE")
+tree_input->Draw("TBeamSimData.fMomentum.fE/29")
+tree_input->Draw("TBeamSimData.fMomentum.fE/29-939")
+tree_input->Draw("TBeamSimData.fMomentum.fM")
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+.L macros/brho_func/GenInputFromRIDF.cc+g
+.q
+.L macros/brho_func/GenInputFromRIDF.cc+g
+GenInputFromRIDF()
+.L macros/brho_func/GenInputFromRIDF.cc+g
+GenInputFromRIDF("29ne_emp")
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos()
+ls
+.q
+.x macros/brho_func/chksim.cc
+ls
+ht 1
+sh
+figa
+hn
+figa
+hb
+hn
+hn
+figa
+hn
+figa
+ls
+zon 2 2;hht 13
+zon 2 2;hht 13;hn;hn;hn
+print "temp.ps"
+.! lpr temp.ps
+.q
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+.q
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos(486)
+.x macros/brho_func/chksim.cc(486)
+ls
+ht 1
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+sh
+.q
+.L macros/brho_func/calc_fdc2pos.cc+g
+calc_fdc2pos(486)
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+sh
+figa
+hn
+figa
+hn
+figa
+hn
+figa
+zon 2 2;hht 13;hn;hn;hn
+print "temp.ps"
+.! lpr temp.ps
+hn
+zon
+hs
+ht
+sh
+zon 2 2;hht 13;hn;hn;hn
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+ht 9
+sh
+figa
+hn
+figa
+hn
+figa
+hn
+figa
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chisim_db.png"
+hb
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chksim_dy.png"
+hn
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chksim_db.png"
+hb
+hb
+hb
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chksim_dx.png"
+hn
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chksim_da.png"
+ht 1
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chksim_xy.png"
+hn
+print "../../../../anaroot/macros/fig/Analysis_meeting/2016_0608/chksim_xysim.png"
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.x macros/brho_func/fit_brho.cc
+.x macros/brho_func/fit_fl.cc
+lgy
+lny
+ls
+zon 3 3;hht 1;hn;hn;hn;hn;hn;hn
+zon 3 3;hht 1;hn;hn;hn;hn;hn;hn;hn;hn
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+ls
+ls
+.pwd
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+.ls
+tree_input->Draw("brho")
+tree_input->Draw("brho:brho_fun")
+tree->Print()
+tree_input->Print()
+.q
+.q
+fetch "root/brho_func/fit_brho_out.root"
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+sh
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_A29Z9.root")
+.ls
+tree_input->Print()
+tree_input->Draw("tgta")
+tree_input->Draw("fdc1x")
+tree_input->Draw("tgta")
+tree_input->Draw("tgtb")
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.ls
+tree->Print()
+tree->Draw("fdc1a:fdc1x>>h")
+ls
+ht 1
+tree->Draw("fdc1a:fdc1x>>h","OK_HODF")
+tree->Draw("fdc1a:fdc1x>>h","OK_HODF","colz")
+zon 3 3
+tree->Draw("fdc1a:fdc1x>>h","OK_HODF","colz")
+tree->Draw("fdc1a:fdc1x>>h","","colz")
+print "temp.ps"
+.! lpr temp.ps
+zon
+tree->Draw("tgta:tgtx>>ht","","colz")
+tree->Draw("tgta:tgtx>>ht","OK_FDC1","colz")
+zon 3 3
+tree->Draw("tgta:tgtx>>ht","OK_FDC1","colz")
+tree->Draw("tgta:tgtx>>ht","","colz")
+c1->cd(2)
+tree->Draw("tgta:tgtx>>ht","OK_FDC1","colz")
+print "temp.ps"
+.! lpr temp.ps
+.q
+ls
+zon 3 4;hht 1;hn;hn;hn;hn;hn;hn;hn;hn;hn
+.q
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree->Draw("tgta:tgtx>>ht","OK_FDC1","colz")
+zon 3 3
+tree->Draw("tgta:tgtx>>ht","","colz")
+c1->cd(2)
+tree->Draw("tgta:tgtx>>ht","OK_FDC1","colz")
+print "temp.ps"
+tree->Draw("tgta:tgtx>>htg","OK_FDC1","colz")
+tree->Draw("tgta:tgtx>>ht","","colz")
+ls
+zon 3 3;hht 1;hn
+print "temp.ps"
+.! lpr temp.ps
+.ls
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_A29Z9.root")
+tree_input->Draw("pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2))")
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))")
+ls
+ht 1
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))>>hh(200,20000,23000)")
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))>>hh(200,20000,230000)")
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))>>hh(200,20000,25000)")
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))>>hh(200,20000,50000)")
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))>>hh(200,26000,28000)")
+.q
+.ls
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+.ls
+tree->Print()
+tree->Draw("tof:fdc2x>>h")
+ls
+ht 1
+tree->Draw("brho:fdc2x>>h")
+tree->Draw("brho:tof>>h")
+tree->Draw("tof:brho>>hh")
+ls
+ht 1
+hn
+tree->Draw("brho:tof>>h","OK_FDC2")
+tree->Draw("tof:brho>>hh","OK_FDC2")
+ls
+ht
+tree->Draw("tof:brho>>hh","OK_FDC2&&brho>7")
+hdel 1 2
+tree->Draw("tof:brho>>hh","OK_FDC2&&brho>7")
+ht
+tree->Draw("tof:brho>>hh","OK_FDC2&&brho>7.2")
+tree->Draw("tof:brho>>hh","OK_FDC2&&brho>7.2&&brho<7.7")
+ht
+tree->Draw("tof:fdc2x>>hh","OK_FDC2&&brho>7.2&&brho<7.7")
+hdel 1
+tree->Draw("tof:fdc2x>>hh","OK_FDC2&&brho>7.2&&brho<7.7")
+ht
+tree->Draw("tof:fdc2x>>hh","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a)<10")
+ht
+tree->Draw("tof:fdc2x>>hh(200,-1200,1200,200,46,54)","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a)<10")
+ht
+tree->Draw("tof:fdc2x>>hh(200,-1200,1200,200,46,54)","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a)>10")
+ht
+tree->Draw("tof:fdc2x>>hh(200,-1200,1200,200,46,54)","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a-10)<10")
+tree->Draw("tof:fdc2x>>hh(200,-1200,1200,200,46,54)","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a-20)<10")
+tree->Draw("tof:fdc2x>>hh(200,-1200,1200,200,46,54)","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a-50)<10")
+tree->Draw("tof:fdc2x>>hh(200,-1200,1200,200,46,54)","OK_FDC2&&brho>7.2&&brho<7.7&&fabs(fdc1a+50)<10")
+.q
+.x macros/brho_func/chksim_func.cc
+.ls
+tree->Draw("tgta")
+tree_input->Draw("tgta")
+tree_input->Draw("tgta:fdc1a")
+tree_input->Draw("tgta:fdc1a>>h")
+tree_input->Draw("tgta:fdc1x>>h")
+.q
+.x macros/brho_func/chksim_func.cc
+tree_input->Draw("tgta:fdc1x>>h")
+tree->Draw("tgta:fdc1x>>h")
+ht
+hn
+tree->Draw("tgta:fdc1a>>h")
+ht
+ls
+hdel 2
+tree->Draw("tgta:fdc1a>>h")
+ls
+ht 2
+tree->Draw("tgta:fdc2x>>h")
+hdel 2
+tree->Draw("tgta:fdc2x>>h")
+ht
+hn
+tree->Draw("tgta:fl_fun>>h")
+tree->Draw("tgta:fl>>h")
+hdel 2
+hdel 1
+tree->Draw("tgta:fl>>h")
+ht
+tree->Draw("fl:tof>>h")
+hdel 1
+tree->Draw("fl:tof>>h")
+ht
+tree->Draw("fdc2x:tof>>h")
+hdel 1
+tree->Draw("fdc2x:tof>>h")
+ht
+tree->Draw("brho:tof")
+ht
+hn
+hdel 1 2
+ls
+tree->Draw("brho:tof")
+tree->Draw("brho:tof>>h")
+ht
+tree->Draw("fdc1a:tof>>h")
+hdel 1 
+tree->Draw("fdc1a:tof>>h")
+ht
+tree->Draw("fdc1a:tof>>h","fabs(fdc1a)<20")
+hdel 1
+tree->Draw("fdc1a:tof>>h","fabs(fdc1a)<20")
+ht
+tree->Draw("fdc1x:tof>>h","fabs(fdc1a)<20")
+hdel 1
+tree->Draw("fdc1x:tof>>h","fabs(fdc1a)<20")
+ht
+tree->Draw("fdc1b:tof>>h","fabs(fdc1a)<20")
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20")
+hdel 1
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20")
+ht
+tree->Draw("fdc2x:tof>>h","OK_HODF&&fabs(fdc1a)<20")
+ht
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20")
+ht
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20&&brho>7.2")
+ht
+hdel 1
+hdel 1 2
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20&&brho>7.2")
+ht
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+hdel 1 2
+tree->Draw("fdc2x:tof>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+ht
+tree->Draw("tof:fdc2x>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+hdel 1
+tree->Draw("tof:fdc2x>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+ht
+tree->Draw("tof:fdc2y>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+tree->Draw("tof:fl>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+hdel 1
+tree->Draw("tof:fl>>h","fabs(fdc1a)<20&&brho>7.2&&brho<7.7")
+ht
+tree->Print()
+tree->Draw("TBeamSimData.fMomentum.fE")
+tree->Draw("TBeamSimData.fMomentum.fPx")
+tree->Draw("TBeamSimData.fMomentum.fX")
+tree->Draw("TBeamSimData.fMomentum.fP.fX")
+tree->Draw("TBeamSimData.fMomentum.fP.fX/TBeamSimData.fMomentum.fP.fZ")
+tree->Draw("TBeamSimData.fMomentum.fP.fY/TBeamSimData.fMomentum.fP.fZ")
+tree->Draw("fdc1b:TBeamSimData.fMomentum.fP.fY/TBeamSimData.fMomentum.fP.fZ")
+ht
+ls
+ht 1
+hdel 1
+tree->Draw("fdc1b:TBeamSimData.fMomentum.fP.fY/TBeamSimData.fMomentum.fP.fZ")
+tree->Draw("fdc1b:TBeamSimData.fMomentum.fP.fY/TBeamSimData.fMomentum.fP.fZ>>hh")
+ls
+ht 1
+tree->Draw("fdc1b-TBeamSimData.fMomentum.fP.fY/TBeamSimData.fMomentum.fP.fZ>>hh")
+tree->Draw("fdc1b*0.001-TBeamSimData.fMomentum.fP.fY/TBeamSimData.fMomentum.fP.fZ>>hh")
+lgy
+lny
+tree->Draw("fdc1a*0.001-TBeamSimData.fMomentum.fP.fX/TBeamSimData.fMomentum.fP.fZ>>hh")
+ls
+lgy
+lny
+hdel 1
+tree->Draw("fdc1a*0.001-TBeamSimData.fMomentum.fP.fX/TBeamSimData.fMomentum.fP.fZ>>hh")
+ht
+lgy
+lny
+tree->Draw("TBeamSimData.fMomentum.fE:brho>hh")
+tree->Draw("TBeamSimData.fMomentum.fP.fE:brho>hh")
+tree->Draw("TBeamSimData.fMomentum.fE:brho>>hh")
+ht
+tree->Draw("TBeamSimData.fMomentum.fE:tof>>hh")
+hdel 1
+tree->Draw("TBeamSimData.fMomentum.fE:tof>>hh")
+ht
+tree->Draw("TBeamSimData.fMomentum.fE:tof>>hh","OK_FDC2")
+ht
+tree->Draw("TBeamSimData.fMomentum.fE:tof>>hh","OK_HODF")
+ht
+tree->Draw("brho:tof>>hh","OK_HODF")
+hdel 1
+tree->Draw("brho:tof>>hh","OK_HODF")
+ht
+8./6.5
+8./6.5*58
+6.5/8*58
+5./8*58
+8./5*58
+6.5/5*58
+tree->Draw("brho:fl/tof/299>>hh","OK_HODF")
+hdel 1
+tree->Draw("brho:fl/tof/299>>hh","OK_HODF")
+tree->Draw("brho*9*299:fl/tof/299>>hh","OK_HODF")
+hdel 1
+tree->Draw("brho*9*299:fl/tof/299>>hh","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl/tof/299>>hh","OK_HODF")
+hdel 1
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl/tof/299>>hh","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl/tof/299>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+TLine *l = new TLine(0,0,1,1,)
+TLine *l = new TLine(0,0,1,1)
+l->Draw()
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl*1.1/tof/299>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl*1.01/tof/299>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl*0.99/tof/299>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl*0.995/tof/299>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl/tof/299>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("brho*9*299/TBeamSimData.fMomentum.fE:fl/tof/299.792>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("brho*9*299.792/TBeamSimData.fMomentum.fE:fl/tof/299.792>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("fl/(brho*9*299.792/TBeamSimData.fMomentum.fE*299.792):tof>>hh(200,0.4,0.65,200,0.4,0.65)","OK_HODF")
+tree->Draw("fl/(brho*9*299.792/TBeamSimData.fMomentum.fE*299.792):tof>>hh(200,0,65,200,0,65)","OK_HODF")
+tree->Draw("fl/(brho*9*299.792/TBeamSimData.fMomentum.fE*299.792):tof>>hh(200,40,75,200,40,75)","OK_HODF")
+tree->Draw("fl:cos(fdc2a*0.001)>>h")
+hdel 1
+hdel 1 00
+hdel 1 100
+tree->Draw("fl:cos(fdc2a*0.001)>>h")
+ht
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h")
+hdel 1
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h")
+ht
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h","fabs(fdc1a)<10")
+ht
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h(200,1,1.06,200,8000,10000)","fabs(fdc1a)<10")
+ls
+ht 1
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h(200,1,1.06,200,8000,10000)","fabs(fdc1a)<10&&fabs(fdc2y)<400")
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h(200,1,1.06,200,8000,10000)","fabs(fdc1a)<10&&fabs(fdc2y)<300")
+ht
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h(200,1,1.06,200,8000,10000)","fabs(fdc1a)<10&&fabs(fdc2b)<100")
+ht
+tree->Draw("fl:1./cos(fdc2a*0.001)>>h(200,1,1.06,200,8000,10000)","fabs(fdc1a)<10&&fabs(fdc1b)<10")
+ht
+.q
+.q
+.x macros/brho_func/chksim.cc
+.ls
+tree_input->Print()
+.ls
+.q
+.x macros/brho_func/chksim.cc(486)
+.ls
+tree_input->Draw("TBeamSimData.fMomentum.fE")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ")
+tree_input->Draw("sqrt(pow(TBeamSimData.fMomentum.fE,2)-(pow(TBeamSimData.fMomentum.fP.fX,2)+pow(TBeamSimData.fMomentum.fP.fY,2)+pow(TBeamSimData.fMomentum.fP.fZ,2)))>>hh(200,26000,28000)")
+tree_input->Draw("brho")
+tree_input->Draw("brho:TBeamSimData.fMomentum.fE")
+tree_input->Draw("brho:tof")
+tree_input->Draw("brho:fl")
+.ls
+tree_input->Draw("brho:fdc2x")
+ht
+ls
+ht 21
+tree_input->Draw("brho:fdc2x>>h")
+ht
+hdel 22
+ls
+tree_input->Draw("brho:fdc2x>>h")
+ht 22
+tree_input->Draw("brho:fdc2a>>h")
+ht
+.ls
+tree_input->Print()
+tree->Draw("fdc1xsim")
+tree->Draw("fdc2xsim")
+tree->Draw("fdc2x")
+tree_input->Draw("fdc2x")
+tree_input->Draw("fdc2xsim")
+tree_input->Draw("fdc2asim")
+tree_input->Draw("fdc2asim:fdc2xsim")
+tree_input->Draw("fdc2a:fdc2x")
+tree_input->Draw("fdc2a:fdc2x>>hh")
+ls
+ht 22
+tree_input->Draw("fdc2asim:fdc2xsim>>hh")
+ht
+tree_input->Draw("fdc2a:fdc2x>>h2")
+ls
+ht 22
+ht 23
+hb
+hn
+hb
+hn
+.q
+.q
+.q
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.x macros/brho_func/chksim_func.cc
+tree->Draw("brho:fl")
+ht
+ls
+.q
+tree->Draw("brho:fl>>hh")
+.x macros/brho_func/chksim_func.cc
+tree->Draw("brho:fl>>hh")
+ls
+ht 2
+.q
+TFile *_file0 = TFile::Open("root/brho_func/func_29f_0000.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree->Print()
+.q
+.x macros/brho_func/chksim_func.cc
+.x macros/brho_func/chksim_func.cc
+.q
+.x macros/brho_func/chksim_func.cc
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 2
+.ls
+tree->Print()
+.q
+.x macros/brho_func/chksim_func.cc
+ht 2
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+.q
+.x macros/brho_func/fit_brho.cc
+ls
+sh
+lgy
+lny
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 2
+.q
+.x macros/brho_func/chksim_func.cc
+ht 2
+.ls
+tree->Print()
+tree->Draw("fdc1x:brho")
+.q
+.x macros/brho_func/chksim.cc
+tree->Draw("fdc1x:brho")
+tree_input->Draw("fdc1x:brho")
+ht
+ls
+tree_input->Draw("fdc1a:brho")
+tree_input->Draw("fdc1a:brho>>hh(200,6,7,200,-50,50)")
+ht
+ls
+ht 21
+.pwd
+.q
+.q
+.x macros/brho_func/chksim.cc(486)
+tree_input->Draw("fdc1a:brho>>hh(200,6,7,200,-50,50)")
+tree_input->Draw("fdc1a:brho>>hh(200,6,8,200,-50,50)")
+ht
+ls
+ht 21
+tree_input->Draw("fdc1a:brho>>hh(200,7,8,200,-50,50)")
+tree_input->Draw("fdc1b:brho>>hh(200,7,8,200,-50,50)")
+ls
+ht
+ht 21
+tree_input->Draw("fdc2y:brho>>hh(200,7,8,200,-50,50)")
+ls
+ht 21
+.q
+.q
+.x macros/brho_func/fit_tof.cc
+hn
+ls
+ht 1
+sh
+.q
+.x macros/brho_func/fit_tof.cc
+.q
+.x macros/brho_func/fit_tof.cc
+.q
+.x macros/brho_func/fit_tof.cc
+hn
+hn
+sh
+.ls
+tree->Print()
+tree->Draw("tof:fdc2x")
+tree->Draw("tof:fdc2x>>hh")
+ls
+ht 11
+tree->Draw("tof:brho>>hh")
+hdel 1 1000
+tree->Draw("tof:brho>>hh")
+ht
+.q
+.x macros/brho_func/fit_tof.cc
+sh
+.q
+.x macros/brho_func/fit_tof.cc
+sh
+.q
+.L macros/brho_func/GenInput.cc+g
+GenInput()
+.q
+.L macros/brho_func/calc_fdc2pos_func.cc+g
+calc_fdc2pos_func()
+.q
+.x macros/brho_func/fit_brho.cc
+sh
+hn
+hn
+hn
+hn
+hb
+hn
+hn
+hn
+hn
+.q
+.x macros/brho_func/fit_fl.cc
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+.q
+.x macros/brho_func/chksim.cc(486)
+ls
+ht 9
+ht 13
+.ls
+tree_input->Draw("fdc2a:fdc2x>>hh")
+ht
+ls
+tree_input->Draw("fdc2asim:fdc2xsim>>hsim")
+ls
+ht 21
+ht 22
+tree_input->Draw("fdc2asim:fdc2xsim>>hsim(200,200,700,200,150,300)")
+tree_input->Draw("fdc2a:fdc2x>>hexp(200,200,700,200,150,300)")
+ls
+ht 22
+ht 23
+ht 22
+ht 23
+ht 22
+zon 2 2;hht 22;hn
+lnz
+ht 5
+zon
+ht
+hn
+hn
+hn
+hb
+sh
+lnz
+lgz
+sh
+.q
+.x macros/brho_func/chksim_func.cc
+.q
+.q
+ls
+.q
+ls
+.q
+.q
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+hn
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 2
+hb
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+hn
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+hn
+hn
+hb
+hb
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 2
+hn
+hb
+hn
+hb
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 5
+hb
+hn
+pry
+figa
+sh
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 6
+hb
+hb
+hn
+hn
+.q
+.x macros/brho_func/chksim_func.cc
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 1
+sh
+ls
+ht 5
+lnz
+.x macros/brho_func/chksim_func.cc
+ht 1
+.q
+.x macros/brho_func/chksim_func.cc
+ls
+ht 5
+ht 1
+hn
+hn
+hbb
+hb
+hn
+hb
+hn
+ls
+zon 2 2;hht 2;hn;ht 5
+.q
+.q
+fetch "root/brho_func/input_A29Z10.root"
+ls
+.ls
+.q
+.q
+TFile *_file0 = TFile::Open("root/brho_func/input_A29Z9.root")
+.ls
+tree->Print()
+tree_input->Print()
+tree_input->Draw("tgtx:tgty>>h")
+ls
+ht 1
+tree_input->Draw("tgtx:tgty>>h0")
+tree_input->Draw("tgta:tgtb>>h1")
+tree_input->Draw("fdc1a:fdc1b>>h3")
+tree_input->Draw("fdc1x:fdc1y>>h2")
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree_input->Draw("fdc1x:fdc1y>>h2")
+tree->Draw("fdc1x:fdc1y>>h2")
+ls
+ht 1
+tree->Draw("tgtx:tgty>>h0")
+tree->Draw("tgta:tgtb>>h1")
+ls
+tree->Print()
+tree->Draw("tgta:tgtb>>h1","OK_HODF")
+tree->Draw("tgtx:tgty>>h0","OK_HODF")
+tree->Draw("fdc1x:fdc1y>>h2","OK_HODF")
+ls
+ht 1
+.ls
+tree->Print()
+tree->Draw("fdc1x:fdc1y>>h2","OK_HODF&&OK_FDC1")
+ls
+ht 1
+ls
+ht 2
+lnz
+tree->Draw("tgtx:tgty>>h0","")
+tree->Draw("tgta:tgtb>>h1","")
+tree->Draw("brho")
+tree->Draw("brho>>h2")
+ls
+ht 3
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree->Draw("brho>>h2")
+tree->Print()
+ls
+.ls
+tree->Print()
+tree->Draw("tgty:tgtx>>h0")
+tree->Draw("tgtb:tgta>>h1")
+tree->Draw("brho>>h2")
+tree->Draw("brho>>h2","OK_HODF")
+tree->Draw("fdc1y:fdc1x>>h3")
+tree->Draw("fdc1y:fdc1x>>h3","OK_HODF")
+ls
+ht 4
+tree->Draw("fdc2y:fdc2x>>h4","OK_HODF")
+ls
+ht 5
+.q
+.q
+.x macros/brho_func/chk_mdf.cc
+.q
+.x macros/brho_func/chk_mdf.cc
+ls
+ht 1
+hn
+hn
+hn
+hn
+hn
+hn
+hb
+ls
+ht 1
+sh
+ls
+ls
+lgy
+lny
+.q
+.x macros/brho_func/chk_mdf.cc
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_0.png"
+ls
+ht 2
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_1.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_2.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_3.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_4.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_5.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_6.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_7.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_8.png"
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_9.png"
+hn
+ls
+tree->Draw("tgty:tgtx>>h0")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+tree->Draw("tgty:tgtx>>h0")
+ls
+ht 1
+lnz
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_in0.png"
+tree->Draw("tgta:tgtb>>h0")
+tree->Draw("tgta:tgtb>>h1")
+ht 2
+ht 1
+hn
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_in1.png"
+ls
+tree->Draw("brho>>h2")
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/chkmdf_in2.png"
+.q
+fetch "root/brho_func/analyzed_29f_0000.root"
+ls
+.q
+TFile *_file0 = TFile::Open("root/brho_func/analyzed_29f_0000.root")
+ls
+.ls
+tree->Print()
+tree->Draw("brho:fdc2x>>h")
+tree->Draw("brho:fdc2x>>h","OK_HODF")
+tree->Draw("brho:fdc2x>>h","OK_HODF","colz")
+tree->Draw("brho:fdc2x>>h","OK_HODF&&OK_FDC2","colz")
+tree->Draw("brho:fdc2x>>h0","OK_HODF&&OK_FDC2","colz")
+tree->Draw("brho:fl>>h0","OK_HODF&&OK_FDC2","colz")
+tree->Draw("brho:fdc2x>>h0","OK_HODF&&OK_FDC2","colz")
+tree->Draw("brho:fl>>h1","OK_HODF&&OK_FDC2","colz")
+tree->Draw("fl:fdc2>>h1","OK_HODF&&OK_FDC2","colz")
+tree->Draw("fl:fdc2x>>h1","OK_HODF&&OK_FDC2","colz")
+ls
+hdel 3
+tree->Draw("fl:fdc2x>>h1","OK_HODF&&OK_FDC2","colz")
+ls
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/sim_fl.png"
+ht 2
+print "/home/kondo/exp/samurai21/anaroot/macros/fig/Analysis_meeting/2016_0831/sim_brho.png"
+.! xterm &
+.q
+.q
+.q
+.q
+.q
+.L macros/7lipn/GenerateInputTree_1n.cc+g
+.q
+.L macros/7lipn/GenerateInputTree_1n.cc+g
+GenerateInputTree_1n(250)
+ls
+ht 1
+sh
+.q
+.L macros/7lipn/GenerateInputTree_1n.cc+g
+GenerateInputTree_1n(250)
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+tree->Draw("NEBULAPla.fTOF")
+tree->Draw("NEBULAPla.fPos[0]")
+tree->Draw("NEBULAPla.fPos[1]")
+tree->Draw("NEBULAPla.fPos[2]")
+ls
+tree->Draw("NEBULAPla.id:NEBULAPla.fPos[2]>>h")
+tree->Draw("NEBULAPla.id:NEBULAPla.fPos[2:2]>>h")
+tree->Draw("NEBULAPla.id:NEBULAPla.fPos[2]>>h")
+tree->Draw("NEBULAPla.id:NEBULAPla.fPos[0]>>h")
+tree->Draw("NEBULAPla.id:NEBULAPla.fPos[1]>>h")
+tree->Draw("NEBULAPla.id:NEBULAPla.fTAveSlw>>h")
+hdel 1
+tree->Draw("NEBULAPla.id:NEBULAPla.fTAveSlw>>h")
+tree->Draw("NEBULAPla.id:NEBULAPla.fTAveSlw>>h")
+ls
+ht 1
+prx
+lgy
+lny
+tree->Draw("NEBULAPla.fTAveSlw>>h(200,0,100)")
+tree->Draw("NEBULAPla.fQAveCal:NEBULAPla.fTAveSlw>>h(200,0,100)")
+tree->Draw("NEBULAPla.fQAveCal:NEBULAPla.fTAveSlw>>h(200,0,100,200,0,100)")
+tree->Draw("NEBULAPla.fQAveCal:NEBULAPla.fTAveSlw>>h(200,0,100,200,0,200)","","colz")
+ls
+bnx 6 200
+ht 1
+ls
+ht 2
+bnx 6 200
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+ls
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Print()
+tree->Draw("NeutPla.fPos.fY")
+tree->Draw("NeutPla.fPos.fZ")
+tree->Draw("NeutPla.fPos.fZ:NeuPla.id>>h")
+tree->Draw("NeutPla.fPos.fZ:NeuPla.ID>>h")
+tree->Draw("NeutPla.fPos.fZ:NeuPla.fID>>h")
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fID>>h")
+tree->Draw("NeutPla.fTOF:NeutPla.fID>>h")
+hdel 1
+tree->Draw("NeutPla.fTOF:NeutPla.fID>>h")
+tree->Draw("NeutPla.fTOF:NeutPla.fID>>h","","colz")
+tree->Draw("NeutPla.fTOF:NeutPla.fID>>h(520,0.5,520.5,200,0,100)","","colz")
+tree->Draw("NeutPla.fTOF:NeutPla.fID>>h(520,0.5,520.5,200,0,200)","","colz")
+ls
+ht 1
+pry
+lgy
+lny
+hb
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+.ls
+tree->Print()
+.q
+.L macros/7lipn/Analize_1n.cc+g
+tree->Print()
+Analyze()
+ls
+ht 1
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+ht 1
+prx
+.q
+.L macros/7lipn/Analize_1n.cc+g
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+ls
+ht 1
+sh
+sh
+bny 0 400
+lgy
+lny
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+ht 1
+sh
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+ht 1
+sh
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+ls
+ht 1
+sh
+.ls
+ht 1
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Print()
+tree->Draw("NeutPla.fID")
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.q
+.L macros/7lipn/Analize_1n.cc+g
+tree->Print()
+Analyze()
+ht 1
+sh
+.q
+.L macros/7lipn/Analize_1n.cc+g
+Analyze()
+ht 1
+sh
+.q
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ht 1
+sh
+prx
+hb
+hb
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ht 1
+sh
+.ls
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+RunParameter
+RunParameter
+.ls
+FragParameter->fTargetPosition 
+FragParameter->fTargetPosition->fX
+FragParameter->fTargetPosition->GetX()
+FragParameter->fTargetPosition->Print()
+FragParameter->fTargetPosition->Z()
+.ls
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.L macros/7lipn/Analyze_1n.cc+g
+.L macros/7lipn/Analyze_1n.cc+g
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ls
+ht 1
+sh
+.ls
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+.ls
+TRunSimParameter
+RunSimParameter
+RunParameter
+RunParameter->fRunName 
+RunParameter->fHeader 
+.L macros/7lipn/Analyze_1n.cc+g
+tree->Print()
+Ana
+Analyze()
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ls
+ht 1
+sh
+ls
+ht 1
+sh
+pry
+lgy
+lny
+sh
+bny 0 400
+lgy
+lny
+hb
+bny 400 520
+sh
+.q
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ls
+ht1 
+ht 1
+sh
+figa
+sh
+lgy
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ht 1
+sh
+lgy
+lny
+.q
+.L macros/7lipn/GenerateInputTree_1n.cc+g
+GenerateInputTree_1n()
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ht 1
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ht 1
+sh
+lnz
+lgz
+lnz
+sh
+sh
+prx
+sh
+hsta
+ht 1
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ls
+ht 7
+sh
+lgy
+lny
+sh
+figa
+sh
+lgz
+lnz
+sh
+pry
+hb
+sh
+prx
+hb
+pry
+hb
+sh
+ls
+ht 1
+sh
+ls
+ht 5
+prx
+xsta
+xsta
+.q
+fetch("root/7lipn/outtree0000_analyzed.root")
+ls
+ht 1
+sh
+prx
+sh
+sh
+sh
+figa
+sh
+ls
+sh
+sh
+sh
+bny 0 400
+hb
+lnz
+sh
+sh
+sh
+ls
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+tree->Draw("VetoPla.fPos.fX")
+tree->Draw("VetoPla.fPos.fY")
+tree->Draw("VetoPla.fPos.fZ")
+tree->Draw("NeutPla.fPos.fZ","","same")
+lgy
+lny
+tree->Draw("NeutPla.fPos.fZ","","")
+zon 1 2
+tree->Draw("NeutPla.fPos.fZ","","")
+cd(2)
+tree->Draw("VetoPla.fPos.fZ","","")
+tree->Draw("NeutPla.fPos.fZ:NeuPla.fTOF","","")
+tree->Draw("NeutPla.fPos.fZ:NeuPla.fTAveSlw","","")
+tree->Draw("NeutPla.fPos.fZ:NeuPla.fTOF","","")
+tree->Draw("NeutPla.fTOF","","")
+gy
+lgy
+lny
+ht
+zon
+tree->Draw("NeutPla.fTOF","","")
+tree->Draw("VetoPla.fTOF","","")
+tree->Draw("VetoPla.fQAve:VetoPla.fTOF","","")
+tree->Draw("VetoPla.fQ:VetoPla.fTOF","","")
+tree->Draw("VetoPla.fQ:VetoPla.fTOF","","colz")
+lgy
+lny
+tree->Draw("VetoPla.fQ:VetoPla.fTOF","VetoPla.fQ>0","colz")
+tree->Draw("VetoPla.fQ:VetoPla.fTOF","VetoPla.fQ>1","colz")
+ls
+tree->Draw("VetoPla.fQ:VetoPla.fTOF","VetoPla.fQ>1>>h0","colz")
+tree->Draw("VetoPla.fQ:VetoPla.fTOF>>h1","VetoPla.fQ>1","colz")
+tree->Draw("VetoPla.fQ:VetoPla.fTOF>>h0","","colz")
+ls
+ht 1
+hn
+hb
+tree->Draw("NeutPla.fQ:NeutPla.fTOF>>h2","","colz")
+ls
+ht 1
+hn
+hn
+hb
+hb
+tree->Draw("NeutPla.fQ:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+ls
+ht 1
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ls
+ht 1
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ht 1
+sh
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("NeutPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+tree->Draw("VetoPla.fID:VetoPla.fTOF>>h0","","colz")
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("VetoPla.fID:VetoPla.fTOF>>h0","","colz")
+tree->Draw("NeutPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze()
+ls
+ht 1
+sh
+tree->Draw("NeutPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+.q
+.q
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("NeutPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+tree->Draw("VetoPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+hdel 1
+tree->Draw("VetoPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+lnz
+pry
+ls
+ht 1
+pry
+hb
+tree->Draw("VetoPla.fX:VetoPla.fY")
+tree->Draw("VetoPla.fPos.fX:VetoPla.fPos.fY")
+tree->Draw("VetoPla.fPos.fX:VetoPla.fPos.fY","","colz")
+tree->Draw("VetoPla.fRandPos.fX:VetoPla.fRandPos.fY","","colz")
+lnz
+ls
+tree->Draw("VetoPla.fPos.fX:VetoPla.fPos.fY>>h","","colz")
+ls
+ht 3
+prx
+hb
+pry
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("VetoPla.fPos.fX:VetoPla.fPos.fY>>h","","colz")
+lnz
+prx
+ls
+ht 1
+prx
+hb
+pry
+lgy
+lny
+tree->Draw("NeutPla.fPos.fX:NeutPla.fPos.fY>>h","","colz")
+ls
+ls
+hdel 1 3
+tree->Draw("NeutPla.fPos.fX:NeutPla.fPos.fY>>h","","colz")
+ls
+ht 1
+prx
+hb
+pry
+tree->Draw("NeutPla.fRandPos.fX:NeutPla.fRandPos.fY>>h","","colz")
+ls
+ht 1
+prx
+hb
+pry
+tree->Draw("VetoPla.fRandPos.fX:VetoPla.fRandPos.fY>>h","","colz")
+ls
+ht 
+ht 1
+prx
+hb
+pry
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze_1n()
+ht 1
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze_1n()
+ht 1
+sh
+lnz
+prx
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze_1n()
+ht 1
+sh
+xsta
+xsta
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze_1n()
+ls
+ht 13
+lgy
+lny
+xsta
+250./46940
+sh
+prx
+hb
+sh
+.q
+.L macros/7lipn/Analyze_1n.cc+g
+Analyze_1n()
+ls
+ht 1
+sh
+.q
+.ls
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/1n/29ne_lh2_27f_0000.root")
+.ls
+tree->Print()
+tree->Draw("NeutPla.fID")
+tree->Draw("NeutPla.fQ:NeutPla.fID>>h","","colz")
+lnz
+lgz
+prx
+ht 1
+prx
+tree->Draw("NeutPla.fPosition.fX:NeutPla.fID>>h","","colz")
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h","","colz")
+hdel 1
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h","","colz")
+lnz
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(100,0.5,100.5,100,-1500,1500)","","colz")
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(100,0.5,100.5,200,-1500,1500)","","colz")
+ls
+ht 2
+prx
+hb
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(100,0.5,100.5,200,-1500,1500)","NeutPla.fQ>6","colz")
+ht 1
+hn
+ls
+ht 3
+prx
+hb
+hn
+hb
+tree->Draw("NeutPla.fQ","NeutPla.fID==80","colz")
+lgy
+tree->Draw("NeutPla.fQ","NeutPla.fID==81","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==81","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==81&&NeutPla.fQ>1","colz")
+lny
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==80&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==79&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==78&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==77&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==280&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==281&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==282&&NeutPla.fQ>1","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==282&&NeutPla.fQ>5","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==280&&NeutPla.fQ>5","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==281&&NeutPla.fQ>5","colz")
+tree->Draw("NeutPla.fQ>>h(100,0,50)","NeutPla.fID==283&&NeutPla.fQ>5","colz")
+tree->Draw("beam.fPosition.fX")
+tree->Draw("beam.fPosition.fY")
+tree->Draw("beam.fPosition.fZ")
+tree->Draw("beam.fP")
+tree->Print()
+tree->Draw("beam.fMomentum.fX")
+tree->Draw("beam.fMomentum.fP.fX")
+tree->Draw("beam.fMomentum.fP.fY")
+lgy
+tree->Draw("beam.fMomentum.fP.fX")
+tree->Draw("beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ")
+tree->Draw("beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.5,0.5)")
+tree->Draw("beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.1,0.1)")
+lny
+tree->Draw("beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.2,0.2)")
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.2,0.2)")
+tree->Draw("NeutPla.fID")
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("NeutPla.fID")
+tree->Draw("NeutPla.fQ")
+lgy
+tree->Draw("NeutPla.fQ","NeutPla.fID<400")
+tree->Draw("NeutPla.fQ:NeutPla.fID>>h(400,0.5,400.5,100,0,100)","NeutPla.fID<400")
+lny
+ls
+ht 1
+bnx 0 1
+hb
+tree->Draw("NeutPla.fX:NeutPla.fID>>h(400,0.5,400.5,200,-1000,1000)","NeutPla.fID<400")
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(400,0.5,400.5,200,-1000,1000)","NeutPla.fID<400")
+ls
+ht 1
+ht 2
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(400,0.5,400.5,200,-1500,1500)","NeutPla.fID<400")
+ht 2
+lnz
+lgz
+prx
+ls
+tree->Draw("NeutPla.fPos.fY:NeutPla.fID>>h(400,0.5,400.5,200,-1500,1500)","NeutPla.fID<400")
+ls
+ht 3
+tree->Draw("NeutPla.fPos.fY:NeutPla.fID>>h(400,0.5,400.5,200,-1500,1500)","NeutPla.fQ>6")
+ht 3
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID>80")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==80")
+ls
+ht 2
+hn
+lnz
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==81")
+ht 3
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==81","colz")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==181","colz")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==180","colz")
+.q
+TFile *_file0 = TFile::Open("root/1n/29ne_lh2_27f_0000.root")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==180","colz")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==80","colz")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==80&&NeutPla.fQ>2","colz")
+lnz
+prx
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fY>>h(200,-1500,1500,200,0,100)","NeutPla.fID==81&&NeutPla.fQ>2","colz")
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(400,0.5,400.5,200,-1500,1500)","NeutPla.fID<400")
+ht 3
+ls
+ht 1
+lnz
+lgz
+lnz
+prx
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(400,0.5,400.5,200,-1500,1500)","NeutPla.fQ>3")
+ls
+ht 1
+hn
+prx
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(520,0.5,520.5,200,-1500,1500)","NeutPla.fQ>3")
+ls
+prx
+ht 3
+prx
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("NeutPla.fPos.fX:NeutPla.fID>>h(520,0.5,520.5,200,-1500,1500)","NeutPla.fQ>3")
+ls
+ht 1
+prx
+hb
+lnz
+lgz
+gStyle->SetOptStat(0)
+tree->Draw("NeutPla.fPos.fY:NeutPla.fX>>h(200,-1000,1000,200,-1500,1500)","NeutPla.fQ>3")
+tree->Draw("NeutPla.fPos.fY:NeutPla.fPos.fX>>h(200,-1000,1000,200,-1500,1500)","NeutPla.fQ>3")
+ls
+ht 2
+lnz
+tree->Draw("beam.fMomentum.fP.fY/beam.fMomentum.fP.fZ:beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.2,0.2,200,-0.2,0.2)")
+ls
+ht 2
+tree->Draw("beam.fMomentum.fP.fY/beam.fMomentum.fP.fZ:beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.2,0.2,200,-0.2,0.2)","","colz")
+tree->Draw("beam.fMomentum.fP.fY/beam.fMomentum.fP.fZ:beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.1,0.1,200,-0.1,0.1)","","colz")
+lnz
+lgz
+lnz
+prx
+hb
+pry
+hb
+tree->Draw("NeutPla.fPos.fY:NeutPla.fPos.fX>>h(200,-1000,1000,200,-1500,1500)","NeutPla.fQ>3")
+lnz
+ht
+ls
+ht 4
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fX>>h(200,-1000,1000,200,-0,150)","NeutPla.fQ>3")
+ls
+ht 4
+bnx 0 20
+hb
+tree->Draw("NeutPla.fQ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,-0,150)","NeutPla.fQ>3")
+ls
+ht 5
+prx
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,10000,15000)","NeutPla.fQ>3")
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,5000,15000)","NeutPla.fQ>3")
+ls
+ht 6
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,7000,8000)","NeutPla.fQ>3")
+ls
+ht 6
+lgz
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,7000,8000)","NeutPla.fQ>3")
+ls
+ht 1
+prx
+hb
+lnz
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fPos.fX>>h(200,-1000,1000,200,7000,8000)","NeutPla.fQ>3")
+ls
+ht 2
+lz
+lgz
+lnz
+bnx 7000 7500
+hb
+bnx 7000 7050
+hb
+bnx 7050 7100
+tree->Draw("NeutPla.fPos.fZ:NeutPla.fPos.fX>>h(200,-1000,1000,200,7000,8000)","NeutPla.fQ>0")
+ls
+ht 5
+prx
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fX>>h(200,-1000,1000,200,7000,8000)","NeutPla.fQ>0")
+tree->Draw("NeutPla.fQ:NeutPla.fPos.fX>>h(200,-1000,1000,200,0,80)","NeutPla.fQ>0")
+ls
+ht 6
+lgz
+tree->Draw("NeutPla.fQ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,0,80)","NeutPla.fQ>0")
+ls
+ht 6
+bnx 0 0.1
+hb
+bnx 0.1 80
+hb
+pry
+lgy
+lny
+hb
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("NeutPla.fQ:NeutPla.fRandPos.fX>>h(200,-1000,1000,200,0,80)","NeutPla.fQ>0")
+tree->Print()
+tree->Draw("NEBULAPla.fPos[0]")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPos.id")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPos.fid")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPos.ID")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPos.fID")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPos.id")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPla.id")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPla.id","","colz]")
+tree->Draw("NEBULAPla.fPos[1]:NEBULAPla.id","","colz")
+tree->Draw("NEBULAPla.fPos[2]:NEBULAPla.id","","colz")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPla.id","","colz")
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPla.id>>hh(520,0.5,520.5,200,-2000,2000)","","colz")
+ls
+prx
+ht 1
+prxd
+prx
+hb
+pry
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+tree->Print()
+tree->Draw("NEBULAPla.fPos[0]:NEBULAPla.id>>hh(520,0.5,520.5,200,-2000,2000)","","colz")
+tree->Draw("NEBULAPla.id>>hh(520,0.5,520.5)","","")
+tree->Draw("NEBULAPla.id>>hh(520,0.5,520.5)","NEBULAPla.fQAveCal>6","")
+tree->Draw("NEBULAPla.DTCal>>hh(520,0.5,520.5)","NEBULAPla.fQAveCal>6","")
+tree->Draw("NEBULAPla.DTCal")
+tree->Draw("NEBULAPla.DTSlw")
+tree->Draw("NEBULAPla.fDTSlw")
+tree->Draw("NEBULAPla.fUTSlw")
+tree->Draw("NEBULAPla.fUTSlwT0")
+tree->Draw("NEBULAPla.fAveSlw")
+tree->Draw("NEBULAPla.fAveSlwT0")
+tree->Draw("NEBULAPla.fTAveSlw")
+tree->Draw("NEBULAPla.fDTSlw")
+lgy
+lny
+tree->Draw("NEBULAPla.fDTCal")
+tree->Draw("NEBULAPla.fTUCal")
+tree->Draw("NEBULAPla.fTUSlw")
+tree->Draw("NEBULAPla.fTDUSlw")
+tree->Draw("NEBULAPla.fTDSlw")
+tree->Draw("NEBULAPla.fQAveCal:NEBULAPla.fPos[0]>>h")
+ls
+ht 1
+tree->Draw("NEBULAPla.fQAveCal:NEBULAPla.fPos[0]>>h(200,-2000,2000,200,0,200)")
+ls
+ht 1
+.ld
+.ls
+tree->Print()
+.q
+.L macros/7lipn/Analyze_1n_TArt.cc+g
+.L macros/7lipn/Analyze_1n_TArt.cc+g
+.L macros/7lipn/Analyze_1n_TArt.cc+g
+Analyze_1n_TArt()
+ht 1
+sh
+prx
+.q
+.L macros/7lipn/Analyze_1n_TArt.cc+g
+Analyze_1n_TArt()
+ls
+ht 1
+sh
+prx
+hb
+bny 0 50
+hb
+hn
+hn
+hn
+prx
+hb
+hb
+hb
+hb
+.q
+.L macros/7lipn/Analyze_1n_TArt.cc+g
+.L macros/7lipn/Analyze_1n_TArt.cc+g
+Analyze_1n_TArt()
+ls
+ht 1
+sh
+prx
+hb
+prx
+tree->Draw("beam.fMomentum.fP.fY/beam.fMomentum.fP.fZ:beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.1,0.1,200,-0.1,0.1)","","colz")
+.ls
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+tree->Draw("beam.fMomentum.fP.fY/beam.fMomentum.fP.fZ:beam.fMomentum.fP.fX/beam.fMomentum.fP.fZ>>h(200,-0.1,0.1,200,-0.1,0.1)","","colz")
+.q
+TVector3 p(170.51,0,3187.46)
+p.RotateY(-59.91)
+p.Print()
+.q
+.q
+.q
+TFile *_file0 = TFile::Open("root/7lipn/outtree0000.root")
+.ls
+TRunSimParameter
+RunParameter
+RunParameter->Print()
+.q
+TFile *_file0 = TFile::Open("root/1n/29ne_lh2_27f_0000.root")
+RunParameter->Print()
+NEBULAParameter->Print()
+NeuLANDParameter->Print()
+ls
+.q
+.L macros/examples/GenerateInputTree_PhaseSpaceDecay_25o.cc+g
+GenerateInputTree_PhaseSpaceDecay_25o()
+.q
+.L macros/examples/GenerateInputTree_PhaseSpaceDecay_25o.cc+g
+GenerateInputTree_PhaseSpaceDecay_25o()
+.q
+TFile *_file0 = TFile::Open("root/examples/inputtree_25o_example.root")
+.ls
+.q
+TFile *_file0 = TFile::Open("root/examples/example_25o_0000.root")
+.ls
+tree->Print()
+tree->Draw("fragment.fPrePosition.fX")
+tree->Draw("fragment.fPrePosition.fX:fragment.fPrePosition.fZ")
+.q
+.L macros/examples/analysis_25o_crosstalk_example.cc+g
+.q
+.L macros/examples/analysis_25o_example.cc
+.L macros/examples/analysis_25o_example.cc+g
+.L macros/examples/analysis_25o_example.cc+g
+.q
+.L macros/examples/analysis_25o_example.cc+g
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_crosstalk_example()
+ls
+ls()
+sh()
+ls
+ht(4)
+prx()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+.L macros/examples/analysis_25o_example.cc+g
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_crosstalk_example()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+ls
+ls()
+sh()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+sh()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+sh()
+prx()
+hb()
+pry()
+sh()
+.q
+.L macros/examples/GenerateInputTree_PhaseSpaceDecay_25o.cc+g
+GenerateInputTree_PhaseSpaceDecay_25o()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+.q
+.q
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+ls()
+ht(13)
+hn()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+ls()
+ht(13)
+hn()
+hb()
+.q
+.L macros/examples/analysis_25o_example.cc+g
+analysis_25o_example()
+ls()
+sh()
+figa
+figa()
+hn()
+.q
+.L macros/examples/GenerateInputTree_PhaseSpaceDecay_25o.cc+g
+GenerateInputTree_PhaseSpaceDecay_25o()
+.ls
+.q
+TFile *_file0 = TFile::Open("root/examples/inputtree_25o_example.root")
+.ls
+tree_input->Print()
+tree_input->Draw("TBeamSimdata.fMomentum.fP.fX")
+tree_input->Draw("TBeamSimdata.fMomentum.fP")
+tree_input->Draw("TBeamSimdata.fMomentum.fP.x()")
+tree_input->Draw("TBeamSimdata.fMomentum.fP.Px()")
+tree_input->Draw("TBeamSimdata.fMomentum.Px()")
+tree_input->Draw("TBeamSimdata.fMomentum.fE")
+tree_input->Print()
+tree_input->Draw("TBeamSimdata.fMomentum.fE")
+tree_input->Draw("TBeamSimdata.fMomentum.fP.fE")
+tree_input->Draw("TBeamSimdata.fMomentum.fP.fX")
+tree_input->Draw("TBeamSimdata.fMomentum.fP.fZ")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ","TBeamSimData.fZ>0")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ:TBeamSimData.fMomentum.fP.fX","TBeamSimData.fZ>0")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ:TBeamSimData.fMomentum.fP.fX","TBeamSimData.fZ>0","colz")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fY:TBeamSimData.fMomentum.fP.fX","TBeamSimData.fZ>0","colz")
+tree_input->Draw("TBeamSimData.fMomentum.fP.fZ:TBeamSimData.fMomentum.fP.fX","TBeamSimData.fZ>0","colz")
+.q
+.L macros/examples/GenerateInputTree_fng.cc
+.L macros/examples/GenerateInputTree_fng.cc+g
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+TFile *_file0 = TFile::Open("root/examples/inputtree_fng.root")
+.ls
+tree_input->Print()
+tree_input->Draw("TBeamSimData.fZ")
+tree_input->Draw("TBeamSimData.fP.fE")
+tree_input->Draw("TBeamSimData.fMomentum.fE")
+tree_input->Draw("TBeamSimData.fMomentum.fE","TBeamSimData.fZ==0")
+tree_input->Draw("TBeamSimData.fMomentum.fE","TBeamSimData.fA==0")
+tree_input->Show(0)
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+.ls
+.q
+TFile *_file0 = TFile::Open("root/examples/inputtree_fng.root")
+.ls
+herel_gen->Draw()
+hxypos->Draw()
+hzxpos->Draw()
+hxyang->Draw()
+tree_input
+tree_input->Print()
+tree_input->Shwo(0)
+tree_input->Show(0)
+tree_input->Show(1)
+tree_input->Show(2)
+tree_input->Show(3)
+tree_input->Show(4)
+tree_input->Show(5)
+tree_input->Show(6)
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_isotropic_0000.root")
+hxyang->Draw()
+.ls
+tree->Draw("DALINaI.fEnergy")
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_isotropic_0000.root")
+tree->Draw("DALINaI.fEnergy")
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_isotropic_0000.root")
+tree->Draw("DALINaI.fEnergy")
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+.ls
+tree->Draw("DALINaI.fEnergy")
+tree->Draw("NEBULAPla.fTAveSlw")
+tree->Draw("DALINaI.fEnergy")
+tree->Draw("NEBULAPla.fTAveSlw","NEBULAPla.fQAveCal>6")
+tree->Draw("DALINaI.fEnergy")
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+tree->Draw("DALINaI.fEnergy")
+tree->Draw("VetoPla.fID:NeutPla.fTOF>>h3","NeutPla.fQ>6","colz")
+tree->Draw("NEBULAPla.fTAveSlw","NEBULAPla.fQAveCal>6")
+tree->Draw("DALINaI.fEnergy")
+tree->Draw("DALINaI.fEnergy:NEBULAPla.fTAveSlw>>h")
+tree->Draw("DALINaI.fEnergy:NEBULAPla.fTAveSlw>>h","","colz")
+tree->Draw("DALINaI.fEnergy:NEBULAPla.fTAveSlw>>h","NEBULAPla.fQAveCla>6","colz")
+tree->Draw("DALINaI.fEnergy:NEBULAPla.fTAveSlw>>h","NEBULAPla.fQAveCal>6","colz")
+hdel 1
+tree->Draw("DALINaI.fEnergy:NEBULAPla.fTAveSlw>>h","NEBULAPla.fQAveCal>6","colz")
+tree->Draw("DALINaI.fEnergy:NEBULAPla.fTAveSlw>>h","NEBULAPla.fQAveCal>6&&DALINaI.fEnergy>0","colz")
+tree->Draw("NEBULAPla.fTAveSlw","NEBULAPla.fQAveCal>6")
+tree->Draw("NeuLANDPla.fTAveSlw","NeuLANDPla.fQAveCal>6")
+tree->Print()
+tree->Draw("NeuLANDPla.id")
+tree->Draw("NeuLANDPla.fID")
+tree->Draw("NEBULAPla.id")
+tree->Draw("NEBULAPla.fTAveSlw:NEBULAPla.id>>h")
+tree->Draw("NEBULAPla.fTAveSlw:NEBULAPla.id>>h","NEBULAPla.fQAveCal>6")
+hdel 1
+tree->Draw("NEBULAPla.fTAveSlw:NEBULAPla.id>>h","NEBULAPla.fQAveCal>6")
+ls
+ht 1
+tree->Draw("NEBULAPla.GetEntries()")
+tree->Draw("NEBULAPla@.GetEntries()")
+tree->Draw("NEBULAPla@.GetEntries()>>h")
+ls
+xsta
+tree->Draw("NEBULAPla@.GetEntries()>>h","NEBULAPla.fQAveCal>6")
+ht
+xsta
+tree->Draw("NEBULAPla@.GetEntries()>>h","")
+ht
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+.ls
+tree->Print()
+tree->Draw("ok_fdc1")
+tree->Draw("ok_fdc2")
+tree->Draw("ok_icf")
+tree->Draw("ok_hod")
+tree->Draw("fdc2x")
+.q
+.q
+TFile *_file0 = TFile::Open("root/examples/example_gaus0000.root")
+.ls
+tree->Print()
+tree->Draw("ok_window")
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+tree->Print()
+GenerateInputTree_fng()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_gaus0000.root")
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+tree->Draw("ok_window")
+tree->Draw("fdc2y")
+lgy
+lny
+tree->Draw("fdc2x")
+lgy
+lny
+tree->Draw("fdc2x:ok_icf>>h")
+tree->Draw("fdc2x:ok_icf>>h","","colz")
+tree->Draw("fdc2x:ok_icf>>h","fdc2x>-2000","colz")
+hdel 1
+tree->Draw("fdc2x:ok_icf>>h","fdc2x>-2000","colz")
+tree->Draw("fdc2y:ok_icf>>h","fdc2y>-2000","colz")
+tree->Draw("fdc2b:ok_icf>>h","fdc2b>-2000","colz")
+hdel 1
+tree->Draw("fdc2b:ok_icf>>h","fdc2b>-2000","colz")
+tree->Draw("fdc2b:ok_hod>>h","fdc2b>-2000","colz")
+tree->Draw("fdc2x:ok_hod>>h","fdc2x>-2000","colz")
+hdel 1
+tree->Draw("fdc2x:ok_hod>>h","fdc2x>-2000","colz")
+.q
+.L macros/examples/GenerateInputTree_fng.cc+g
+GenerateInputTree_fng()
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+tree->Draw("fdc2x:ok_hod>>h","fdc2x>-2000","colz")
+tree->Draw("fdc2x:fdc2y>>h","fdc2x>-2000","colz")
+tree->Draw("fdc2x:fdc2y>>h","ok_icf","colz")
+hdel 1
+tree->Draw("fdc2x:fdc2y>>h","ok_icf","colz")
+tree->Draw("fdc2x:fdc2y>>h","!ok_icf","colz")
+tree->Draw("fdc2x:fdc2y>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+hdel 1
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","!ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_hod","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_fdc2","colz")
+hdel 1
+tree->Draw("fdc2y:fdc2x>>h","ok_fdc2","colz")
+ht
+lnz
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+.q
+TFile *_file0 = TFile::Open("root/examples/example_fng0000.root")
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_fdc2","colz")
+hdel 1
+tree->Draw("fdc2y:fdc2x>>h","ok_fdc2","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_hod","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_hod","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2y:fdc2x>>h","ok_window","colz")
+lnz
+tree->Draw("fdc2y:fdc2x>>h","ok_window&&ok_fdc2","colz")
+tree->Draw("ok_fdc2:ok_window>>h")
+tree->Draw("ok_fdc2:ok_window>>h","","colz")
+hdel 1
+tree->Draw("ok_fdc2:ok_window>>h","","colz")
+lnz
+tree->Draw("ok_fdc2:ok_icf>>h","","colz")
+hdel 1
+tree->Draw("ok_fdc2:ok_icf>>h","","colz")
+tree->Draw("ok_hod:ok_icf>>h","","colz")
+hdel 1
+tree->Draw("ok_hod:ok_icf>>h","","colz")
+tree->Draw("ok_hod:ok_fdc2>>h","","colz")
+hdel 12
+hdel 1
+tree->Draw("ok_hod:ok_fdc2>>h","","colz")
+tree->Print()
+tree->Draw("fdc2y:fdc2x>>h","ok_window&&ok_fdc2","colz")
+hdel 1
+tree->Draw("fdc2y:fdc2x>>h","ok_window&&ok_fdc2","colz")
+tree->Draw("fdc2a:fdc2x>>h","ok_window&&ok_fdc2","colz")
+hdel 1
+tree->Draw("fdc2a:fdc2x>>h","ok_window&&ok_fdc2","colz")
+tree->Draw("fdc2a:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2a:fdc2x>>h","","colz")
+tree->Draw("fdc2a:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2a:fdc2x>>h","","colz")
+tree->Draw("fdc2a:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2a:fdc2x>>h","","colz")
+tree->Draw("fdc2a:fdc2x>>h","ok_icf","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_icf","colz")
+tree->Draw("fdc2b:fdc2y>>h","","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_icf","colz")
+tree->Draw("fdc2b:fdc2y>>h","","colz")
+hdel 1
+tree->Draw("fdc2b:fdc2y>>h","","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2","colz")
+hdel 1
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2&&ok_icf","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2&&ok_icf","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2&&ok_icf","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2","colz")
+tree->Draw("fdc2b:fdc2y>>h","ok_fdc2&&ok_icf","colz")
+.q
+TFile *_file0 = TFile::Open("root/examples/inputtree_fng.root")
+tree_input->Show(0)
+tree_input->Show(0)
+.q
+TFile *_file0 = TFile::Open("root/run0000.root")
+tree->Print()
+.ls
+DALIParameter->Print()
+DALIParameter->fDALINaISimParameterMap 
+DALIParameter->fDALINaISimParameterMap[1]
+ls
+.ls
+TArtDALINaI
+.q

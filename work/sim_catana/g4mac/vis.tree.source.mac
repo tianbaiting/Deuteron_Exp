@@ -1,0 +1,34 @@
+/vis/open OGLIX
+#/vis/open VRML2FILE
+#/vis/open DAWNFILE
+#/vis/open RayTracerX
+
+# Z-X view
+/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+/control/execute g4mac/SourceRunConfig.mac
+
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+
+/action/file/RunName GammaSource
+/action/file/SaveDirectory ./rootfiles
+/action/file/OverWrite y
+
+# RUN 0 137Cs source
+/action/gun/Type Tree
+/action/gun/tree/InputFileName rootfiles/input/GammaSource0.662MeV.root
+/action/gun/tree/TreeName tree_input
+
+
+

@@ -1,0 +1,14 @@
+multitrace: package for drawing trajectories
+
+1. 
+modify the following lines in multitrace.mac
+/samurai/geometry/Dipole/FieldFile ../field_map/141114-2,9T-3000.bin
+/samurai/geometry/FDC2/Position 0 0 4000 mm
+/samurai/geometry/HOD/Position 0 0 5000 mm
+
+2. 
+modify multitrace/multitrace.inp for defining nuclide and energy
+
+3. 
+./multitrace/draw_multitrace.sh
+

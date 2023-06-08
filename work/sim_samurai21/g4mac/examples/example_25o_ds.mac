@@ -1,0 +1,45 @@
+##/vis/open OGLIX
+#/vis/open VRML2FILE
+##/vis/open DAWNFILE
+#
+## Z-X view
+#/vis/viewer/set/upVector 1 0 0
+#/vis/viewer/set/viewpointThetaPhi 90. 90.
+#
+## X-Y view
+##/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+/samurai/geometry/Dipole/Angle 30 deg
+/samurai/geometry/Dipole/FieldFile /home/kondo/exp/samurai/field_map/120405-bn_stage-d-540,0A-3,0T-map.bin
+/samurai/geometry/Dipole/FieldFactor 1.0
+
+/samurai/geometry/NEBULA/ParameterFileName geometry/NEBULA_samurai21_1_ds.csv
+/samurai/geometry/NEBULA/DetectorParameterFileName geometry/NEBULA_Detectors_samurai21_1.csv
+
+/samurai/geometry/NeuLAND/ParameterFileName geometry/NeuLAND_samurai21_1_ds.csv
+/samurai/geometry/NeuLAND/DetectorParameterFileName geometry/NeuLAND_Detectors_samurai21_1.csv
+
+/samurai/geometry/Target/Position 0 0 -4500 mm
+
+/samurai/geometry/FillAir false
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+/action/file/RunName nebula_neuland_1_25o_psdecay_ds_
+/action/file/SaveDirectory root/examples/
+/action/file/OverWrite y
+
+/action/data/NEBULA/StoreSteps false
+/action/data/NeuLAND/StoreSteps false
+
+/action/gun/Type Tree 
+
+/action/gun/tree/InputFileName root/examples/inputtree_25o_1_example.root
+/action/gun/tree/TreeName tree_input
+/action/gun/tree/beamOn 10000
+
+/action/gun/tree/InputFileName root/examples/inputtree_25o_10_example.root
+/action/gun/tree/TreeName tree_input
+/action/gun/tree/beamOn 10000
+

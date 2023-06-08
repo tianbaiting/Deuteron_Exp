@@ -1,0 +1,34 @@
+# Load geometry
+#/control/execute geometry/geom_dayone_C.mac
+/control/execute geometry/geom_dayone_D.mac
+
+# must be called after definition of detector positions
+/samurai/geometry/Update
+
+/action/file/OverWrite y
+/action/file/RunName example_gaus
+/action/file/SaveDirectory root/examples/
+
+/action/gun/Type Gaus
+/action/gun/Position 0 0 -400 cm
+/action/gun/PositionXSigma 10 cm
+/action/gun/PositionYSigma 10 cm
+/action/gun/AngleX 0 mrad
+/action/gun/AngleY 0 mrad
+#/action/gun/AngleXSigma 40 mrad
+#/action/gun/AngleYSigma 40 mrad
+/action/gun/AngleXSigma 100 mrad
+/action/gun/AngleYSigma 100 mrad
+
+/action/gun/Z 6
+/action/gun/A 22
+/action/gun/SetBeamParticle
+/action/gun/Energy 230 MeV
+
+# do not store the geant4 step information
+/action/data/NEBULA/StoreSteps false
+
+# do not include resolution
+#/action/data/NEBULA/Resolution false
+
+/run/beamOn 100

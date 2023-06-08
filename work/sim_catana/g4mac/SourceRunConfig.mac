@@ -1,0 +1,19 @@
+/control/suppressAbortion 1
+
+# Detector settings
+# Target
+# Standard Calibration source
+/samurai/geometry/PutSource true
+/samurai/geometry/Target/Position 0 0 3 mm
+/samurai/geometry/Target/Thickness 0.01 mm
+
+# FDC1
+/samurai/geometry/FDC1/Position 0.228 -0.113 1530.44 mm
+
+# CATANA
+/catana/ParameterFileName geometry/CATANA_samurai09_source.csv
+/catana/DetectorParameterFileName geometry/CATANA_Detectors_samurai09.csv
+
+# must be called after definition of detector position
+/samurai/geometry/Update
+

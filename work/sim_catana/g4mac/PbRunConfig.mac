@@ -1,0 +1,20 @@
+/control/suppressAbortion 1
+
+# Detector settings
+# Pb Target
+/samurai/geometry/PutSource false
+/samurai/geometry/Target/Position -2.5 2.5 -4255.06 mm
+/samurai/geometry/Target/Thickness 1.5 mm
+/samurai/geometry/Target/MaterialName Pb
+
+# FDC1
+# origin is the SAMURAI magnet center
+/samurai/geometry/FDC1/Position 0.228 -0.113 -2720.87 mm
+
+# CATANA
+/catana/ParameterFileName geometry/CATANA_samurai09.csv
+/catana/DetectorParameterFileName geometry/CATANAPLUS_Detectors.csv
+
+# must be called after definition of detector position
+/samurai/geometry/Update
+

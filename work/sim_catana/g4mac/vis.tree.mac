@@ -1,0 +1,52 @@
+#/vis/open OGLIX
+/vis/open VRML2FILE
+#/vis/open DAWNFILE
+#/vis/open RayTracerX
+
+# Z-X view
+/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+/samurai/geometry/PutSource false
+#/samurai/geometry/Target/Position 0 0 3.75 mm
+/samurai/geometry/Target/Position -2.5 2.5 -4255.06 mm
+/samurai/geometry/Target/Thickness 1.5 mm
+/samurai/geometry/Target/MaterialName Pb
+
+# FDC1
+# Origin is the CATANA center
+#/samurai/geometry/FDC1/Position 0.228 -0.113 1530.44 mm
+# origin is the SAMURAI magnet center
+/samurai/geometry/FDC1/Position 0.228 -0.113 -2720.87 mm
+
+# CATANA
+/catana/ParameterFileName geometry/CATANAPLUS.csv
+/catana/DetectorParameterFileName geometry/CATANAPLUS_Detectors.csv
+
+# must be called after definition of detector position
+/samurai/geometry/Update
+
+/vis/drawVolume
+
+/vis/viewer/refresh
+
+#/vis/scene/endOfEventAction accumulate
+#/vis/scene/add/trajectories smooth
+#/vis/modeling/trajectories/create/drawByCharge
+#/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+#/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+#
+#
+#/action/file/RunName GammaSource
+#/action/file/SaveDirectory ./rootfiles
+#/action/file/OverWrite y
+#
+#/action/gun/Type Tree
+#/action/gun/tree/InputFileName rootfiles/GammaSource.root
+#/action/gun/tree/TreeName tree_input
+#
+#/action/gun/tree/beamOn 0
+

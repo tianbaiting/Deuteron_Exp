@@ -1,0 +1,63 @@
+##/vis/open OGLIX
+#/vis/open VRML2FILE
+##/vis/open DAWNFILE
+#
+## Z-X view
+##/vis/viewer/set/upVector 1 0 0
+#/vis/viewer/set/viewpointThetaPhi 90. 90.
+#
+## X-Y view
+##/vis/viewer/set/viewpointThetaPhi 0. 90.
+#
+## side view for charged particle window
+##/vis/viewer/set/viewpointThetaPhi 30. 210.
+#
+## side view for neutron window
+##/vis/viewer/set/viewpointThetaPhi 60. 210.
+##/vis/viewer/set/viewpointThetaPhi 60. 60.
+## front view of neutron window
+##/vis/viewer/set/viewpointThetaPhi 210. 90.
+#
+##/vis/viewer/set/viewpointThetaPhi 30. 90.
+#
+##zoom
+#/vis/viewer/zoom 1.5
+##/vis/viewer/zoom 7.0
+#
+#/vis/drawVolume
+#
+## must be called after definition of detector positions
+#
+#/vis/scene/endOfEventAction accumulate
+#/vis/scene/add/trajectories smooth
+#/vis/modeling/trajectories/create/drawByCharge
+#/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+#/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+
+/dali/ParameterFileName geometry/DALI_samurai21.csv
+/dali/DetectorParameterFileName geometry/DALI_Detectors_samurai21.csv
+/dali/ResolutionFileName geometry/DALI_Resolution_s021.csv
+
+#/dali/Resolution false
+/samurai/geometry/Update
+
+/action/file/OverWrite y
+
+/action/gun/Position 0 0 0 mm
+
+#/action/gun/Type Pencil
+/action/gun/Type Isotropic
+/action/gun/Energy 1 MeV
+/action/gun/SetBeamParticleName gamma
+
+/action/cut/gamma    0.1 mm
+/action/cut/electron 0.1 mm
+/action/cut/positron 0.1 mm
+#/action/cut/gamma    1 mm
+#/action/cut/electron 1 mm
+#/action/cut/positron 1 mm
+
+#
+/tracking/verbose 0
+/run/beamOn 10000
+#

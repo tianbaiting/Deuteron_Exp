@@ -1,0 +1,30 @@
+/vis/open OGLIX
+#/vis/open VRML2FILE
+#/vis/open DAWNFILE
+
+# Load geometry
+/control/execute geometry/geom_dayone_C.mac
+#/control/execute geometry/geom_dayone_D.mac
+
+# Z-X view
+/vis/viewer/set/upVector 1 0 0
+/vis/viewer/set/viewpointThetaPhi 90. 90.
+
+# X-Y view
+#/vis/viewer/set/viewpointThetaPhi 0. 90.
+
+/vis/drawVolume
+
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 1
+
+/action/file/OverWrite y
+
+/action/gun/Type Pencil
+/action/gun/Z 8
+/action/gun/A 24
+/action/gun/SetBeamParticle
+/action/gun/Energy 200 MeV

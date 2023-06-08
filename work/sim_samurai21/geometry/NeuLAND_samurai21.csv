@@ -1,0 +1,7 @@
+Position, 0,0,7031.6,
+NeutSize, 47, 2500, 47,
+VetoSize, 320, 1900, 10,
+Angle, 0, 0, 0,
+////input time reso for one PMT
+TimeReso, 0.212,
+Q_factor, 1.34,
