@@ -13,9 +13,9 @@ include $(G4INSTALL)/config/binmake.gmk
 
 CPPFLAGS += $(shell $(ROOTSYS)/bin/root-config --cflags) -g $(G4SMCPPFLAGS)
 
-ROOTLIBS = $(shell $(ROOTSYS)/bin/root-config --glibs)
-TARTLIBS = -L$(TARTSYS)/lib -lanaroot -lXMLParser
-LDLIBS += $(ROOTLIBS) $(G4SMLDLIBS) $(TARTLIBS)
+ROOTLIBS = $(shell $(ROOTSYS)/bin/root-config --glibs) -ltbb
+TARTLIBS = -L$(TARTSYS)/lib -lanacatana -lanadali -lanasamurai -lanabrips -lanacore -lXMLParser
+LDLIBS += $(G4SMLDLIBS) $(TARTLIBS) $(ROOTLIBS)
 
 cleanall: clean
 	rm -vf txt/*

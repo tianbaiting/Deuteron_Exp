@@ -17,9 +17,9 @@ rootlib:
 	@cp lib$(name).so ../lib
 
 CPPFLAGS += -fPIC $(shell $(ROOTSYS)/bin/root-config --cflags)  -g -UG4UI_USE_QT $(G4SMCPPFLAGS)
-ROOTLIBS = $(shell $(ROOTSYS)/bin/root-config --glibs)
-TARTLIBS = -L$(TARTSYS)/lib -lanaroot -lXMLParser
-EXTRALIBS += $(ROOTLIBS) $(G4SMLDLIBS) $(TARTLIBS)
+ROOTLIBS = $(shell $(ROOTSYS)/bin/root-config --glibs) -ltbb
+TARTLIBS = -L$(TARTSYS)/lib -lanacatana -lanadali -lanasamurai -lanabrips -lanacore -lXMLParser
+EXTRALIBS += $(G4SMLDLIBS) $(TARTLIBS) $(ROOTLIBS)
 
 include $(G4INSTALL)/config/binmake.gmk
 
