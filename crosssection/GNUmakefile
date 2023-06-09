@@ -14,8 +14,9 @@ include $(G4INSTALL)/config/binmake.gmk
 CPPFLAGS += $(shell $(ROOTSYS)/bin/root-config --cflags) -g $(G4SMCPPFLAGS)
 
 ROOTLIBS = $(shell $(ROOTSYS)/bin/root-config --glibs) -ltbb
+G4LIBS = $(shell geant4-config --libs)
 TARTLIBS = -L$(TARTSYS)/lib -lanacatana -lanadali -lanasamurai -lanabrips -lanacore -lXMLParser
-LDLIBS += $(G4SMLDLIBS) $(TARTLIBS) $(ROOTLIBS)
+LDLIBS += $(G4SMLDLIBS) $(TARTLIBS) $(G4LIBS) $(ROOTLIBS)
 
 cleanall: clean
 	rm -vf txt/*
