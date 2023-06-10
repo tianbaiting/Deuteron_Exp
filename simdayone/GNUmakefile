@@ -19,7 +19,20 @@ ROOTLIBS = $(shell $(ROOTSYS)/bin/root-config --glibs) -ltbb
 TARTLIBS = -L$(TARTSYS)/lib -lanacatana -lanadali -lanasamurai -lanabrips -lanacore -lXMLParser
 EXTRALIBS += $(G4SMLDLIBS) $(TARTLIBS) $(ROOTLIBS)
 
+DICT = src/simdayone_classDict.cc
+DICTPCM = $(patsubst %.cc,%_rdict.pcm,$(DICT))
+LINKDEF = include/LinkDef.hpp
+
+sources = $(patsubst $(DICT),,$(wildcard src/*.cc)) $(DICT)
+
 include $(G4INSTALL)/config/binmake.gmk
+
+root_class_headers = TDeutSimParameter.hh
+
+DICT: $(DICT)
+$(DICT): $(LINKDEF) $(patsubst %,include/%,$(root_class_headers))
+	rootcling -I $(shell pwd)/include -f $@ $(root_class_headers) $<
+	-install -Dvm644 $(DICTPCM) ../lib/
 
 cleanall: clean
 	rm -vf include/*~
@@ -27,3 +40,4 @@ cleanall: clean
 	rm -vf ./*~
 	rm -vf ./*.so
 	rm -vf ../lib/lib$(name).so
+	rm -vf $(DICT) $(DICTPCM) $(patsubst src/%,../lib/%,$(DICTPCM))

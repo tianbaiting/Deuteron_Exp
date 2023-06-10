@@ -31,7 +31,7 @@ public:
   G4double GetAngle(){return fAngle;}
   TString GetFieldFileName(){return fMagField->GetFieldFileName();}
   Double_t GetFieldFactor(){return fMagField->GetFieldFactor();}
-
+  
 protected:
   G4double fAngle;
 

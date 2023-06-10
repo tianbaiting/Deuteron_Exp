@@ -6,6 +6,7 @@
 #include "G4Box.hh"
 #include "G4Trap.hh"
 #include "G4UnionSolid.hh"
+#include "G4SubtractionSolid.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4PVReplica.hh"
@@ -35,7 +36,6 @@ DipoleConstruction::DipoleConstruction()
 {
   fWorldMaterial = G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
   fDipoleMaterial = G4NistManager::Instance()->FindOrBuildMaterial("G4_Fe");
-  fVacuumMaterial = G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
   new DipoleConstructionMessenger(this);
 }
 //______________________________________________________________________________________
@@ -95,14 +95,13 @@ G4LogicalVolume* DipoleConstruction::ConstructSub()
   G4double yoke_y = 4640*0.5*mm;
   G4double yoke_z = 3500*0.5*mm;
   G4Box* yoke_box = new G4Box("yoke_box",yoke_x,yoke_y,yoke_z);
-  fLogicDipole = new G4LogicalVolume(yoke_box,fDipoleMaterial,"yoke_log");
 
   //------------------------------- vacuum chamber inside yoke
   G4double vchamber_x = 1.62*m;
   G4double vchamber_y = 0.4*m;
   G4double vchamber_z = 3.5*0.5*m;
   G4double vchamber_zz = 621.1537 *mm; // from center of yoke to trap
-  G4Box* vchamber_box = new G4Box("vchamber_box",vchamber_x,vchamber_y,vchamber_z);
+  G4Box* vchamber_box = new G4Box("vchamber_box",vchamber_x,vchamber_y,vchamber_z + 1);
 
   G4double vchamber_xx = 2.57*m;
   G4double vchamber_yy = (vchamber_z - vchamber_zz) * 0.5;
@@ -110,22 +109,14 @@ G4LogicalVolume* DipoleConstruction::ConstructSub()
 				     vchamber_yy,vchamber_x,vchamber_xx,0,
 				     vchamber_yy,vchamber_x,vchamber_xx,0);
   G4RotationMatrix *vct_rm = new G4RotationMatrix(); vct_rm->rotateX(-90.*deg);
-  G4UnionSolid* vchamber_sol = new G4UnionSolid("vchamber_sol",vchamber_box,vchamber_trap,vct_rm,G4ThreeVector(0,0,vchamber_zz+(vchamber_z-vchamber_zz)*0.5));
+  G4ThreeVector *vct_trans = new G4ThreeVector(0,0,vchamber_zz+(vchamber_z-vchamber_zz)*0.5);
+  
+  auto yoke_sol = new G4SubtractionSolid("yoke_solid",yoke_box,vchamber_box);
+  yoke_sol = new G4SubtractionSolid("yoke_solid",yoke_sol,vchamber_trap,vct_rm,*vct_trans);
+  fLogicDipole = new G4LogicalVolume(yoke_sol,fDipoleMaterial,"yoke_log");
 
-  G4LogicalVolume *vchamber_log = new G4LogicalVolume(vchamber_sol,fVacuumMaterial,"vchamber_log");
-  //vchamber_log->SetVisAttributes(new G4VisAttributes(G4Colour::Yellow()));
-  G4ThreeVector pVchamber(0,0,0);
-  new G4PVPlacement(0,
-		    G4ThreeVector(0,0,0),
-		    vchamber_log,
-		    "vchamber",
-		    fLogicDipole,
-		    false,
-		    0);
-		    
-  fLogicDipole->SetVisAttributes(new G4VisAttributes(G4Colour::Blue()));
-  vchamber_log->SetVisAttributes(new G4VisAttributes(G4Colour::Gray()));
-
+  auto yoke_vis = new G4VisAttributes(G4Colour{0,0,1,0.5});
+  fLogicDipole->SetVisAttributes(yoke_vis);
 
   return fLogicDipole;
 }

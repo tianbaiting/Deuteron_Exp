@@ -7,6 +7,8 @@ class DayoneDetectorConstruction;
 class G4UIdirectory;
 class G4UIcmdWithoutParameter;
 class G4UIcmdWithABool;
+class G4UIcmdWithAString;
+class G4UIcmdWithADoubleAndUnit;
 class G4UIcmdWith3VectorAndUnit;
 
 class DayoneDetectorConstructionMessenger : public G4UImessenger
@@ -24,10 +26,21 @@ protected:
   G4UIcmdWithoutParameter* fUpdateGeometryCmd;
   G4UIcmdWithABool* fFillAirCmd;
 
-  // for Li target
   G4UIdirectory* fTargetDirectory;
-  G4UIcmdWithABool* fSetLiTargetCmd;
+  G4UIcmdWithABool* fSetTargetCmd;
+  G4UIcmdWithAString* fTargetMatCmd;
   G4UIcmdWith3VectorAndUnit* fTargetSizeCmd;
+  G4UIcmdWith3VectorAndUnit* fTargetPosCmd;
+  G4UIcmdWithADoubleAndUnit* fTargetAngleCmd;
+
+  G4UIdirectory* fPDCDirectory;
+  G4UIcmdWithADoubleAndUnit* fPDCAngleCmd;
+  G4UIcmdWith3VectorAndUnit* fPDC1PosCmd;
+  G4UIcmdWith3VectorAndUnit* fPDC2PosCmd;
+
+  G4UIdirectory* fDumpDirectory;
+  G4UIcmdWithADoubleAndUnit* fDumpAngleCmd;
+  G4UIcmdWith3VectorAndUnit* fDumpPosCmd;
 
 };
 
