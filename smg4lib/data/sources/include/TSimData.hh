@@ -17,8 +17,9 @@ public:
 
 public:
   //Int_t          fPrimaryParticleID;// modified from smsimulator4.3
-  Int_t          fParentID;// 
-  Int_t          fTrackID;// 
+  Int_t          fParentID;         // 0 for primary particle
+  Int_t          fTrackID;          //
+  Int_t          fStepNo;           // in chronological order
   Int_t          fZ;                //     
   Int_t          fA;                //     
   Int_t          fPDGCode;          //     

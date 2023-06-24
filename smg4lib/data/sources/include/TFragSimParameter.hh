@@ -14,19 +14,16 @@ public:
   friend std::ostream& operator<<(std::ostream& out,  const TFragSimParameter& prm);
 
 public:
-  TVector3 fTargetPosition;// position at Laboratory coordinate in mm
-  Double_t fTargetThickness;// target thickness in mm
-  TVector3 fFDC1Position;// position at Laboratory coordinate in mm
-  TVector3 fFDC2Position;
-  TVector3 fWindowHolePosition;
-  TVector3 fICFPosition;
-  TVector3 fHODPosition;
+  Double_t fTargetThickness;  // target thickness in mm
+  TVector3 fTargetPosition;   // position at laboratory coordinate in mm
+  Double_t fTargetAngle;      // angle (counterclockwise) in rad
 
-  Double_t fFDC1Angle;
-  Double_t fFDC2Angle;
-  Double_t fWindowHoleAngle;
-  Double_t fICFAngle;
-  Double_t fHODAngle;
+  Double_t fPDCAngle;         // PDC angle (counterclockwise) in rad
+  TVector3 fPDC1Position;     // position at rotated coordinate in mm
+  TVector3 fPDC2Position;     // position at rotated coordinate in mm
+
+  Double_t fDumpAngle;        // dump angle (counterclockwise) in rad
+  TVector3 fDumpPosition;     // position at rotated coordinate in mm
 
   ClassDef(TFragSimParameter, 1)
 };

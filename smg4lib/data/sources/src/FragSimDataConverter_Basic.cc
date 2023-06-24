@@ -42,19 +42,19 @@ int FragSimDataConverter_Basic::Initialize()
 int FragSimDataConverter_Basic::DefineBranch(TTree *tree)
 {
   if (fDataStore) {
-    tree->Branch("fdc1x",&fFDC1X,"fdc1x/D");
-    tree->Branch("fdc1a",&fFDC1A,"fdc1a/D");
-    tree->Branch("fdc1y",&fFDC1Y,"fdc1y/D");
-    tree->Branch("fdc1b",&fFDC1B,"fdc1b/D");
-    tree->Branch("fdc2x",&fFDC2X,"fdc2x/D");
-    tree->Branch("fdc2a",&fFDC2A,"fdc2a/D");
-    tree->Branch("fdc2y",&fFDC2Y,"fdc2y/D");
-    tree->Branch("fdc2b",&fFDC2B,"fdc2b/D");
-    tree->Branch("ok_fdc1",&fOK_FDC1,"ok_fdc1/O");
-    tree->Branch("ok_window",&fOK_Window,"ok_window/O");
-    tree->Branch("ok_fdc2",&fOK_FDC2,"ok_fdc2/O");
-    tree->Branch("ok_icf",&fOK_ICF,"ok_icf/O");
-    tree->Branch("ok_hod",&fOK_HOD,"ok_hod/O");
+    tree->Branch("target_x",&fTargetX,"target_x/D");
+    tree->Branch("target_y",&fTargetY,"target_y/D");
+    tree->Branch("target_theta",&fTargetTheta,"target_y/D");
+    tree->Branch("target_phi",&fTargetPhi,"target_y/D");
+    tree->Branch("target_energy",&fTargetEnergy,"target_energy/D");
+    tree->Branch("ok_target",&fOK_Target,"ok_target/O");
+
+    tree->Branch("pdc1x",&fPDC1X,"pdc1x/D");
+    tree->Branch("pdc1y",&fPDC1Y,"pdc1y/D");
+    tree->Branch("pdc2x",&fPDC2X,"pdc2x/D");
+    tree->Branch("pdc2y",&fPDC2Y,"pdc2y/D");
+    tree->Branch("ok_pdc1",&fOK_PDC1,"ok_pdc1/O");
+    tree->Branch("ok_pdc2",&fOK_PDC2,"ok_pdc2/O");
   }
   return 0;
 }
@@ -63,82 +63,87 @@ int FragSimDataConverter_Basic::ConvertSimData()
 {
   Int_t ndata = fFragSimDataArray->GetEntries();
 
+  TVector3 pos_target = fFragSimParameter->fTargetPosition;
+  Double_t ang_target = fFragSimParameter->fTargetAngle;
+
+  TVector3 pos_target_in{NAN, NAN, NAN};
+  Int_t stepno_target_in{-1};
+  TLorentzVector mom_target_in{NAN, NAN, NAN, NAN};
+
+  Double_t ang_pdc = fFragSimParameter->fPDCAngle;
+  TVector3 pos_pdc1 = fFragSimParameter->fPDC1Position;
+  TVector3 pos_pdc2 = fFragSimParameter->fPDC2Position;
+  pos_pdc1.RotateY(ang_pdc); pos_pdc2.RotateY(ang_pdc); // Lab frame
+
+  Int_t stepno_pdc1_in{-1}, stepno_pdc1_out{-1};
+  Int_t stepno_pdc2_in{-1}, stepno_pdc2_out{-1};
+  TVector3 pos_pdc1_in{NAN, NAN, NAN}, pos_pdc1_out{NAN, NAN, NAN};
+  TVector3 pos_pdc2_in{NAN, NAN, NAN}, pos_pdc2_out{NAN, NAN, NAN};
+
   for (int i=0;i<ndata;++i){
-    TSimData* data = (TSimData*)fFragSimDataArray->At(i);
-    if (data->fDetectorName=="FDC1"){
+    auto data = (TSimData*)fFragSimDataArray->At(i);
 
-      TVector3 pos_fdc1 = fFragSimParameter->fFDC1Position;
-      TVector3 pos_pre = data->fPrePosition - pos_fdc1;
-      TVector3 pos_post = data->fPostPosition - pos_fdc1;
-      fFDC1X = 0.5*(pos_pre.x() + pos_post.x());
-      fFDC1Y = 0.5*(pos_pre.y() + pos_post.y()); 
-      fFDC1A = (pos_post.x() - pos_pre.x())/(pos_post.z()-pos_pre.z());
-      fFDC1B = (pos_post.y() - pos_pre.y())/(pos_post.z()-pos_pre.z());
+    if (data->fDetectorName=="Target"){
 
-      Double_t dz = pos_post.z() - pos_pre.z();
-      if (dz>139) fOK_FDC1 = true; // to avoid aksuri event (dz(FDC1)=140)
-//      std::cout<<"fdc1 "<<pos_post.z() - pos_pre.z()<<" "
-//	       <<pos_pre.z()<<" "
-//	       <<pos_post.z()<<" "
-//	       <<fOK_FDC1<<" "
-//	       <<std::endl;
+      if (stepno_target_in == -1 || data->fStepNo < stepno_target_in){
+        stepno_target_in = data->fStepNo;
+        pos_target_in = data->fPrePosition - pos_target;
+        mom_target_in = data->fPreMomentum;
+        pos_target_in.RotateY(-ang_target); // Change to target frame
+        mom_target_in.RotateY(-ang_target);
+      }
 
+    }else if (data->fDetectorName=="PDC1"){
 
-    }else if (data->fDetectorName=="WinC1_Hole" ||
-	      data->fDetectorName=="WinC2_Hole"    ){
-      fOK_Window = true;
+      if (stepno_pdc1_in == -1 || data->fStepNo < stepno_pdc1_in){
+        stepno_pdc1_in = data->fStepNo;
+        pos_pdc1_in = data->fPrePosition - pos_pdc1;
+        pos_pdc1_in.RotateY(-ang_pdc); // Change to PDC frame
+      }
+      if (stepno_pdc1_out == -1 || data->fStepNo > stepno_pdc1_out){
+        stepno_pdc1_out = data->fStepNo;
+        pos_pdc1_out = data->fPostPosition - pos_pdc1;
+        pos_pdc1_out.RotateY(-ang_pdc);
+      }
 
-    }else if (data->fDetectorName=="FDC2"){
+    }else if (data->fDetectorName=="PDC2"){
 
-      TVector3 pos_fdc2 = fFragSimParameter->fFDC2Position;
-      Double_t ang_fdc2 = fFragSimParameter->fFDC2Angle/180.*TMath::Pi();//deg
-
-      TVector3 pos_pre = data->fPrePosition;
-      TVector3 pos_post = data->fPostPosition;
-      pos_fdc2.RotateY(-ang_fdc2);
-      pos_pre.RotateY(-ang_fdc2);
-      pos_post.RotateY(-ang_fdc2);
-      pos_pre -= pos_fdc2;
-      pos_post -= pos_fdc2;
-      fFDC2X = 0.5*(pos_pre.x() + pos_post.x());
-      fFDC2Y = 0.5*(pos_pre.y() + pos_post.y()); 
-      fFDC2A = (pos_post.x() - pos_pre.x())/(pos_post.z()-pos_pre.z());
-      fFDC2B = (pos_post.y() - pos_pre.y())/(pos_post.z()-pos_pre.z());
-
-      Double_t dz = pos_post.z() - pos_pre.z();
-      if (dz>634) fOK_FDC2 = true;// to avoid kasuri event (dz(FDC2)=634.64)
-
-//      std::cout<<"fdc2 "<<pos_post.z() - pos_pre.z()<<" "
-//	       <<pos_pre.z()<<" "
-//	       <<pos_post.z()<<" "
-//	       <<fOK_FDC2<<" "
-//	       <<std::endl;
-
-    }else if (data->fDetectorName=="ICF"){
-      TVector3 pos_icf = fFragSimParameter->fICFPosition;
-      Double_t ang_icf = fFragSimParameter->fICFAngle/180.*TMath::Pi();//deg
-
-      TVector3 pos_pre  = data->fPrePosition;
-      TVector3 pos_post = data->fPostPosition;
-      pos_icf.RotateY(-ang_icf);
-      pos_pre.RotateY(-ang_icf);
-      pos_post.RotateY(-ang_icf);
-      pos_pre -= pos_icf;
-      pos_post -= pos_icf;
-
-      Double_t dz = pos_post.z() - pos_pre.z();
-      if (dz>479) fOK_ICF = true;// to avoid kasuri event (dz(ICF)=480)
-
-//      std::cout<<"icf "<<pos_post.z() - pos_pre.z()<<" "
-//	       <<pos_pre.z()<<" "
-//	       <<pos_post.z()<<" "
-//	       <<fOK_ICF<<" "
-//	       <<std::endl;
-
-
-    }else if (data->fDetectorName=="HOD"){
-      fOK_HOD = true;
+      if (stepno_pdc2_in == -1 || data->fStepNo < stepno_pdc2_in){
+        stepno_pdc2_in = data->fStepNo;
+        pos_pdc2_in = data->fPrePosition - pos_pdc2;
+        pos_pdc2_in.RotateY(-ang_pdc); // Change to PDC frame
+      }
+      if (stepno_pdc2_out == -1 || data->fStepNo > stepno_pdc2_out){
+        stepno_pdc2_out = data->fStepNo;
+        pos_pdc2_out = data->fPostPosition - pos_pdc2;
+        pos_pdc2_out.RotateY(-ang_pdc);
+      }
+      
     }
+  }
+
+  // To avoid kasuri event (dz(PDC)=32)
+  fOK_PDC1 = (pos_pdc1_out.Z() - pos_pdc1_in.Z()) > 31;
+  fOK_PDC2 = (pos_pdc2_out.Z() - pos_pdc2_in.Z()) > 31;
+  fOK_Target = stepno_target_in > 0; // As long as it hit the target
+
+  if (fOK_PDC1)
+  {
+    fPDC1X = 0.5*(pos_pdc1_in.X() + pos_pdc1_out.X()) - pos_pdc1.X();
+    fPDC1Y = 0.5*(pos_pdc1_in.Y() + pos_pdc1_out.Y()) - pos_pdc1.Y();
+  }
+  if (fOK_PDC2)
+  {
+    fPDC2X = 0.5*(pos_pdc2_in.X() + pos_pdc2_out.X()) - pos_pdc2.X();
+    fPDC2Y = 0.5*(pos_pdc2_in.Y() + pos_pdc2_out.Y()) - pos_pdc2.Y();
+  }
+  if (fOK_Target)
+  {
+    fTargetX = pos_target_in.X(); // Neglect the target thickness
+    fTargetY = pos_target_in.Y();
+    fTargetTheta = mom_target_in.Theta()/TMath::Pi()*180;
+    fTargetPhi = mom_target_in.Phi()/TMath::Pi()*180;
+    fTargetEnergy = mom_target_in.Energy() - mom_target_in.M();
   }
 
   return 0;
@@ -146,19 +151,18 @@ int FragSimDataConverter_Basic::ConvertSimData()
 //____________________________________________________________________
 int FragSimDataConverter_Basic::ClearBuffer()
 {
-  fFDC1X = -9999;
-  fFDC1A = -9999;
-  fFDC1Y = -9999;
-  fFDC1B = -9999;
-  fFDC2X = -9999;
-  fFDC2A = -9999;
-  fFDC2Y = -9999;
-  fFDC2B = -9999;
-  fOK_FDC1   = false;
-  fOK_Window = false;
-  fOK_FDC2   = false;
-  fOK_ICF    = false;
-  fOK_HOD    = false;
+  fTargetX = -99;
+  fTargetY = -99;
+  fTargetTheta = -99;
+  fTargetPhi = -999;
+  fTargetEnergy = -99;
+  fOK_Target = false;
+  fPDC1X = -999;
+  fPDC1Y = -999;
+  fPDC2X = -999;
+  fPDC2Y = -999;
+  fOK_PDC1 = false;
+  fOK_PDC2 = false;
   return 0;
 }
 //____________________________________________________________________

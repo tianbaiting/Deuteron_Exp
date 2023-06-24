@@ -11,6 +11,7 @@ std::ostream& operator<<(std::ostream& out, const TSimData& data)
   //out << data.fPrimaryParticleID << " ";
   out << data.fParentID << " ";
   out << data.fTrackID << " ";
+  out << data.fStepNo << " ";
   out << "\""<<data.fParticleName.Data() << "\" ";
   out << "\""<<data.fDetectorName.Data() << "\" ";
   out << data.fZ << " ";
@@ -42,6 +43,7 @@ TSimData::TSimData()
     //fPrimaryParticleID(0),
     fParentID(0),
     fTrackID(0),
+    fStepNo(0),
     fZ(-9999),
     fA(-9999),
     fPDGCode(0),

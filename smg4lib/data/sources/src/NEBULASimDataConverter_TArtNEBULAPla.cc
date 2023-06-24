@@ -39,7 +39,7 @@ int NEBULASimDataConverter_TArtNEBULAPla::Initialize()
 
   fNEBULASimDataArray = sman->FindSimDataArray("NEBULASimData");
   if (fNEBULASimDataArray==0){
-    std::cout<<"NEBULANeuLANDSimDataConveter_TArtNEBULAPla : NEBULASimDataArray is not found."
+    std::cout<<"NEBULASimDataConveter_TArtNEBULAPla : NEBULASimDataArray is not found."
 	     <<std::endl;
     return 1;
   }

@@ -48,11 +48,14 @@ G4bool FragmentSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 
   G4int parentid = aStep->GetTrack()->GetParentID();
   G4int trackid =  aStep->GetTrack()->GetTrackID();
+  G4int stepno = aStep->GetTrack()->GetCurrentStepNumber();
   G4int pdgCode = dynamicParticle->GetPDGcode();
   TString particleName(particleDefinition->GetParticleName().data());
 
   G4TouchableHistory* theTouchable = (G4TouchableHistory*)(preStepPoint->GetTouchable());
-  G4VPhysicalVolume* physicalVolume = theTouchable->GetVolume(0); // 0: depth
+  
+  // GetVolume(G4int depth = 0), 0 means the sensitive area, 1 means the detector itself
+  G4VPhysicalVolume* physicalVolume = theTouchable->GetVolume(1); 
   const G4String& detectorName = physicalVolume->GetName();
   const Double_t mass_MeV = particleDefinition->GetPDGMass()/MeV;
 
@@ -66,6 +69,7 @@ G4bool FragmentSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     //data->fPrimaryParticleID = trackid - 1;
     data->fParentID = parentid;
     data->fTrackID = trackid;
+    data->fStepNo = stepno;
     data->fZ = particleDefinition->GetAtomicNumber();
     data->fA = particleDefinition->GetAtomicMass();
     data->fPDGCode = pdgCode;

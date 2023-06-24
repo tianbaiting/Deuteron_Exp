@@ -6,6 +6,7 @@
 #include "TFragSimParameter.hh"
 
 class TString;
+class TVector3;
 class TTree;
 class TClonesArray;
 
@@ -24,20 +25,9 @@ private:
   TFragSimParameter *fFragSimParameter;
   TClonesArray *fFragSimDataArray;
 
-  Double_t fFDC1X;
-  Double_t fFDC1A;
-  Double_t fFDC1Y;
-  Double_t fFDC1B;
-  Double_t fFDC2X;
-  Double_t fFDC2A;
-  Double_t fFDC2Y;
-  Double_t fFDC2B;
-
-  Bool_t   fOK_FDC1;
-  Bool_t   fOK_Window;
-  Bool_t   fOK_FDC2;
-  Bool_t   fOK_ICF;
-  Bool_t   fOK_HOD;
+  Double_t fTargetX, fTargetY, fTargetTheta, fTargetPhi, fTargetEnergy;
+  Double_t fPDC1X, fPDC1Y, fPDC2X, fPDC2Y;
+  Bool_t   fOK_Target, fOK_PDC1, fOK_PDC2;
 
 };
 #endif

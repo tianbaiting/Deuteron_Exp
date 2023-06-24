@@ -52,6 +52,7 @@ G4bool NEBULASD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 
   G4int parentid = aStep->GetTrack()->GetParentID();
   G4int trackid = aStep->GetTrack()->GetTrackID();
+  G4int stepno = aStep->GetTrack()->GetCurrentStepNumber();
   TString particleName(particleDefinition->GetParticleName().data());
   TString processName;
   if(postProcess) processName = postProcess->GetProcessName().data();
@@ -74,6 +75,7 @@ G4bool NEBULASD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     //data->fPrimaryParticleID = parentid - 1;
     data->fParentID = parentid;
     data->fTrackID = trackid;
+    data->fStepNo = stepno;
     data->fZ = particleDefinition->GetAtomicNumber();
     data->fA = particleDefinition->GetAtomicMass();
     data->fPDGCode = dynamicParticle->GetPDGcode();
