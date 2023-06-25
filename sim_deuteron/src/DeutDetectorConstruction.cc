@@ -228,6 +228,17 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
   dump_vis->SetForceSolid(true);
   dump_log->SetVisAttributes(dump_vis);
 
+  G4RotationMatrix dump_rm; dump_rm.rotateY(-fDumpAngle);
+  G4ThreeVector dump_pos_lab{fDumpPos}; dump_pos_lab.rotateY(-fDumpAngle);
+  G4Transform3D dump_trans{dump_rm, dump_pos_lab};
+  new G4PVPlacement{dump_trans, dump_log, "Dump", experimentalHall_log, false, 0};
+  frag_prm->fDumpAngle = -fDumpAngle;
+  frag_prm->fDumpPosition.SetXYZ(
+    fDumpPos.x()/mm, 
+    fDumpPos.y()/mm, 
+    fDumpPos.z()/mm
+  );
+
   return experimentalHall_phys;
 }
 //______________________________________________________________________________
