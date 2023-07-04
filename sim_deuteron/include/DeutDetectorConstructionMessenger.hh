@@ -24,6 +24,7 @@ protected:
 
   G4UIdirectory* fGeometryDirectory;
   G4UIcmdWithoutParameter* fUpdateGeometryCmd;
+  G4UIcmdWithAString* fAutoConfigGeometryCmd;
   G4UIcmdWithABool* fFillAirCmd;
 
   G4UIdirectory* fTargetDirectory;
@@ -45,4 +46,3 @@ protected:
 };
 
 #endif
-

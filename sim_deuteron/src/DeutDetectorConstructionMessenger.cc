@@ -18,6 +18,11 @@ DeutDetectorConstructionMessenger::DeutDetectorConstructionMessenger(DeutDetecto
   fUpdateGeometryCmd = new G4UIcmdWithoutParameter("/samurai/geometry/Update",this);
   fUpdateGeometryCmd->SetGuidance("Update SAMURAI Geometry");
 
+  fAutoConfigGeometryCmd = new G4UIcmdWithAString("/samurai/geometry/AutoConfig",this);
+  fAutoConfigGeometryCmd->SetGuidance("Configure SAMURAI Geometry Automatically");
+  fAutoConfigGeometryCmd->SetParameterName("MacroName", true);
+  fAutoConfigGeometryCmd->SetDefaultValue("macro/geom_autoconfig.mac");
+
   fFillAirCmd = new G4UIcmdWithABool("/samurai/geometry/FillAir",this);
   fFillAirCmd->SetGuidance("Fill Air or Vacuum for Experimental room");
   fFillAirCmd->SetParameterName("FillAir",true);
@@ -112,6 +117,7 @@ DeutDetectorConstructionMessenger::~DeutDetectorConstructionMessenger()
 {
   delete fGeometryDirectory;
   delete fUpdateGeometryCmd;
+  delete fAutoConfigGeometryCmd;
   delete fFillAirCmd;
 
   delete fTargetDirectory;
@@ -137,6 +143,9 @@ void DeutDetectorConstructionMessenger::SetNewValue(G4UIcommand* command,
   if       ( command == fUpdateGeometryCmd ){
     fDetectorConstruction->UpdateGeometry();
 
+  }else if ( command == fAutoConfigGeometryCmd){
+    fDetectorConstruction->AutoConfigGeometry(newValue);
+  
   }else if ( command == fFillAirCmd ){
     fDetectorConstruction->SetFillAir(fFillAirCmd->GetNewBoolValue(newValue));
 

@@ -9,6 +9,7 @@ class PDCConstruction;
 class NEBULAConstruction;
 
 class G4VSensitiveDetector;
+class G4VModularPhysicsList;
 
 #include "G4VUserDetectorConstruction.hh"
 #include "G4ThreeVector.hh"
@@ -29,11 +30,15 @@ public:
   void SetTargetAngle(G4double angle);
   void SetTargetPos(G4ThreeVector pos);
   void UpdateGeometry();
+  void AutoConfigGeometry(G4String outputMacroFile);
 
-  G4VPhysicalVolume* Construct();
+  inline void SetInputMacroFile(G4String inputMacroFile) 
+  { fInputMacroFile = inputMacroFile; }
+  
+  inline void SetModularPhysicsList(G4VModularPhysicsList* phyList)
+  { fModularPhysicsList = phyList; }
 
-  const G4VPhysicalVolume* GetTarget()  {return fTarget_phys;};
-  const G4ThreeVector GetTargetPos(){return fTargetPos;}
+  G4VPhysicalVolume* Construct() override;
 
   void SetFillAir(G4bool tf){fFillAir = tf;}
 
@@ -44,9 +49,6 @@ public:
 private:
   G4bool fFillAir;
   G4bool fSetTarget;
-
-  // Physical volumes
-  G4VPhysicalVolume* fTarget_phys;
 
   DeutDetectorConstructionMessenger *fDetectorConstructionMessenger;
 
@@ -70,6 +72,8 @@ private:
   G4VSensitiveDetector* fPDCSD;
   G4VSensitiveDetector* fNEBULASD;
 
+  G4String fInputMacroFile;
+  G4VModularPhysicsList* fModularPhysicsList;
 };
 
 #endif

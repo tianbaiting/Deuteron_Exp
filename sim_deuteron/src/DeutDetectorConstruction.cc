@@ -37,6 +37,16 @@
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
 
+#include "G4UserLimits.hh"
+#include "G4VModularPhysicsList.hh"
+#include "G4StepLimiterPhysics.hh"
+#include "DeutSteppingAction.hh"
+#include "DeutTrackingAction.hh"
+#include "PrimaryGeneratorActionBasic.hh"
+
+#include <fstream>
+#include <string>
+
 //______________________________________________________________________________
 DeutDetectorConstruction::DeutDetectorConstruction() 
   :
@@ -102,11 +112,10 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
   G4Box* experimentalHall_box
     = new G4Box("expHall_box",expHall_x,expHall_y,expHall_z);
 
-
   G4LogicalVolume *experimentalHall_log 
     = new G4LogicalVolume(experimentalHall_box,WorldMaterial,"expHall_log");
 
-  G4VPhysicalVolume *experimentalHall_phys 
+  G4VPhysicalVolume *experimentalHall_phys
     = new G4PVPlacement(0,G4ThreeVector(),experimentalHall_log,"expHall",0,false,0);
 
   // Make experimental hall invisible 
@@ -137,7 +146,7 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
 			fTargetSize.y()*0.5*mm,
 			fTargetSize.z()*0.5*mm };
     G4LogicalVolume *LogicTarget = new G4LogicalVolume {tgt_box, TargetMaterial, "target_log"};
-    G4LogicalVolume *LogicTargetSD = new G4LogicalVolume {tgt_box, TargetMaterial, "target_log"};
+    G4LogicalVolume *LogicTargetSD = new G4LogicalVolume {tgt_box, TargetMaterial, "targetSD_log"};
     new G4PVPlacement {0, G4ThreeVector{0,0,0}, LogicTargetSD, "Target_SD", LogicTarget, false, 0};
 
     G4RotationMatrix target_rm; target_rm.rotateY(-fTargetAngle);
@@ -310,5 +319,137 @@ void DeutDetectorConstruction::UpdateGeometry()
 {
   G4RunManager::GetRunManager()->DefineWorldVolume(Construct());
   std::cout<<"DeutDetectorConstruction : SAMURAI Geometry is updated"<<std::endl;
+}
+//______________________________________________________________________________
+void DeutDetectorConstruction::AutoConfigGeometry(G4String outputMacroFile)
+{
+  G4RunManager* runManager = G4RunManager::GetRunManager();
+  auto steppingAction = new DeutSteppingAction;
+  auto trackingAction = new DeutTrackingAction;
+  runManager->SetUserAction(steppingAction);
+  runManager->SetUserAction(trackingAction);
+  
+  auto primaryGen = (PrimaryGeneratorActionBasic*)runManager \
+                    ->GetUserPrimaryGeneratorAction();
+
+  auto logicalVolumeStore = G4LogicalVolumeStore::GetInstance();
+  G4LogicalVolume* expHall_log = 
+    logicalVolumeStore->GetVolume("expHall_log");
+
+  G4UserLimits stepLimit{0.1}; // Max step length: 0.1mm
+  expHall_log->SetUserLimits(&stepLimit);
+
+  auto stepLimitPhys = new G4StepLimiterPhysics;
+  fModularPhysicsList->RegisterPhysics(stepLimitPhys);
+
+  auto geoManager = G4GeometryManager::GetInstance();
+  if (geoManager->IsGeometryClosed()) geoManager->OpenGeometry();
+  SetTarget(false), SetFillAir(false);
+  geoManager->CloseGeometry();
+
+  runManager->Initialize();
+
+  steppingAction->SetTargetAngleExp(fTargetAngle);
+  primaryGen->SetBeamParticle("deuteron");
+  primaryGen->SetBeamType("Pencil");
+  primaryGen->SetBeamPosition(G4ThreeVector{0, 0, -5000});
+  primaryGen->SetBeamAngleX(0);
+  primaryGen->SetBeamAngleY(0);
+  primaryGen->SetBeamEnergy(190);
+  runManager->BeamOn(1);
+
+  primaryGen->SetBeamParticle("proton");
+  primaryGen->SetBeamPosition(steppingAction->GetTargetPos());
+  primaryGen->SetBeamAngleX(- steppingAction->GetTargetAngle());
+  runManager->BeamOn(1);
+
+  using namespace std;
+  ifstream input{fInputMacroFile.data()}, geoFile;
+  ofstream output{outputMacroFile.data()};
+  string line, command, geoFileName;
+
+  while (getline(input, line))
+  {
+    size_t n = line.find(" ");
+    if (n != line.npos) command = line.substr(0, n);
+    if (command == "/control/execute"){
+      geoFileName = line.substr(n+1);
+      geoFile.open(geoFileName);
+      input.close();
+      break;
+    }
+  }
+
+  while (getline(geoFile, line))
+  {
+    size_t n = line.find(" ");
+    if (n != line.npos) command = line.substr(0, n);
+    else                command = "";
+    ostringstream str;
+    str << fixed << setprecision(2);
+
+    // Comment the AutoConfig command
+    if (command == "/samurai/geometry/AutoConfig") line = "# " + line;
+
+    if (command == "/samurai/geometry/Target/Position")
+    {
+      G4ThreeVector pos = steppingAction->GetTargetPos()/10;
+      str << command << " " << pos.x() << " " << pos.y() << " "\
+          << pos.z() << " " << "cm";
+      line = str.str();
+    }
+
+    if (command == "/samurai/geometry/Target/Angle")
+    {
+      G4double angle = steppingAction->GetTargetAngle();
+      str << command << " " << angle/M_PI*180 << " " << "deg";
+      line = str.str();
+    }
+    
+    if (command == "/samurai/geometry/PDC/Angle")
+    {
+      G4double angle = trackingAction->GetPDCAngle();
+      str << command << " " << angle/M_PI*180 << " " << "deg";
+      line = str.str();
+    }
+
+    if (command == "/samurai/geometry/PDC/Position1")
+    {
+      G4ThreeVector pos = trackingAction->GetPDC1Pos()/10;
+      str << command << " " << pos.x() << " " << pos.y() << " "\
+          << pos.z() << " " << "cm";
+      line = str.str();
+    }
+
+    if (command == "/samurai/geometry/PDC/Position2")
+    {
+      G4ThreeVector pos = trackingAction->GetPDC2Pos()/10;
+      str << command << " " << pos.x() << " " << pos.y() << " "\
+          << pos.z() << " " << "cm";
+      line = str.str();
+    }
+
+    if (command == "/samurai/geometry/Dump/Angle")
+    {
+      G4double angle = trackingAction->GetDumpAngle();
+      str << command << " " << angle/M_PI*180 << " " << "deg";
+      line = str.str();
+    }
+
+    if (command == "/samurai/geometry/Dump/Position")
+    {
+      G4ThreeVector pos = trackingAction->GetDumpPos()/10;
+      str << command << " " << pos.x() << " " << pos.y() << " "\
+          << pos.z() << " " << "cm";
+      line = str.str();
+    }
+
+    output << line << endl;
+  }
+  geoFile.close();
+  output.close();
+
+  delete steppingAction;
+  delete trackingAction;
 }
 //______________________________________________________________________________

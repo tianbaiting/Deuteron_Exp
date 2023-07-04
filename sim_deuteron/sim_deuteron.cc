@@ -79,9 +79,11 @@ int main(int argc,char** argv)
     physName = argv[2];
   }
   G4PhysListFactorySAMURAI physListFactorySAMURAI;
-  G4VModularPhysicsList* modularPhysicsList = physListFactorySAMURAI.GetReferencePhysList(physName);
+  G4VModularPhysicsList* modularPhysicsList
+    = physListFactorySAMURAI.GetReferencePhysList(physName);
   if(!modularPhysicsList) return 1; // exit failure
   runManager->SetUserInitialization(modularPhysicsList);
+  detector->SetModularPhysicsList(modularPhysicsList);
 
 
   // Choose the Random engine
@@ -127,9 +129,10 @@ int main(int argc,char** argv)
   if (argc!=1) {  // batch mode
     G4String command = "/control/execute ";
     G4String fileName = argv[1];
-    //G4String fileName = "vis.mac";
+    detector->SetInputMacroFile(fileName);
     UImanager->ApplyCommand(command+fileName);
   }else{  // interactive mode : define UI session
+    detector->SetInputMacroFile("vis.mac");
 #ifdef G4UI_USE
       G4UIExecutive* ui = new G4UIExecutive(argc, argv);
 #ifdef G4VIS_USE
