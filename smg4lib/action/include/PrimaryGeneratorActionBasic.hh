@@ -28,7 +28,7 @@ public:
 
   virtual bool SetBeamType(G4String beamType);
   void GeneratePrimaries(G4Event* anEvent);
-  void SetPrimaryVertex(G4Event* anEvent);
+  virtual void SetPrimaryVertex(G4Event* anEvent);
 
 //  virtual void AccumulateBeamData(G4Event* anEvent);
 
