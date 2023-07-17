@@ -620,7 +620,7 @@ G4double menate_R::GetMeanFreePath(const G4Track& aTrack, G4double previousStepS
 
  for(G4int ne=0;ne<NumberOfElements;ne++)
    {
-     G4Element* theElement = (*theElementList)[ne];
+     const G4Element* theElement = (*theElementList)[ne];
 
      //G4cout << "The Element is : " << theElement->GetName() << G4endl;
      Z = static_cast<int>(theElement->GetZ());

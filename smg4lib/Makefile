@@ -6,6 +6,7 @@ all: data physics construction action
 	cp ./*/include/* ./include
 	@if [ ! -d ./lib ] ; then mkdir ./lib  ;fi
 	cp ./*/lib/* ./lib
+	cp ./data/sources/smdata_dict_rdict.pcm ./lib
 
 action: data
 	$(MAKE) -C $@
