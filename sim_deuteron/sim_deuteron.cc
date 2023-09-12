@@ -48,18 +48,13 @@
 #include "G4VModularPhysicsList.hh"
 
 #include "DeutDetectorConstruction.hh"
-#include "PrimaryGeneratorActionBasic.hh"
+#include "DeutPrimaryGeneratorAction.hh"
 #include "RunActionBasic.hh"
 #include "EventActionBasic.hh"
 #include "TrackingActionBasic.hh"
 
-#ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
-#endif
-
-#ifdef G4UI_USE
 #include "G4UIExecutive.hh"
-#endif
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -105,7 +100,9 @@ int main(int argc,char** argv)
   G4UserRunAction* userRunAction = new RunActionBasic;
   runManager->SetUserAction(userRunAction);
 
-  G4VUserPrimaryGeneratorAction* userPrimaryGeneratorAction =  new PrimaryGeneratorActionBasic;
+  auto userPrimaryGeneratorAction = new DeutPrimaryGeneratorAction;
+  // Put the primary generator at the position and orientation of the target
+  userPrimaryGeneratorAction->SetUseTargetParameters(true);
   runManager->SetUserAction(userPrimaryGeneratorAction);
 
   G4UserEventAction* userEventAction = new EventActionBasic;
@@ -114,13 +111,9 @@ int main(int argc,char** argv)
   // Initialize G4 kernel
   runManager->Initialize();
   
-#ifdef G4VIS_USE
   // Initialize visualization
   G4VisManager* visManager = new G4VisExecutive;
-  // G4VisExecutive can take a verbosity argument - see /vis/verbose guidance.
-  // G4VisManager* visManager = new G4VisExecutive("Quiet");
   visManager->Initialize();
-#endif
 
   // Get the pointer to the User Interface manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
@@ -133,26 +126,17 @@ int main(int argc,char** argv)
     UImanager->ApplyCommand(command+fileName);
   }else{  // interactive mode : define UI session
     detector->SetInputMacroFile("vis.mac");
-#ifdef G4UI_USE
-      G4UIExecutive* ui = new G4UIExecutive(argc, argv);
-#ifdef G4VIS_USE
-      UImanager->ApplyCommand("/control/execute vis.mac"); 
-#endif
-//      if (ui->IsGUI())
-//	UImanager->ApplyCommand("/control/execute gui.mac");
-      ui->SessionStart();
-      delete ui;
-#endif
+    G4UIExecutive* ui = new G4UIExecutive(argc, argv);
+    UImanager->ApplyCommand("/control/execute vis.mac"); 
+    ui->SessionStart();
+    delete ui;
   }
-
 
   // Job termination
   // Free the store: user actions, physics_list and detector_description are
   //                 owned and deleted by the run manager, so they should not
   //                 be deleted in the main() program !
-#ifdef G4VIS_USE
   delete visManager;
-#endif
   delete runManager;
 
   return 0;

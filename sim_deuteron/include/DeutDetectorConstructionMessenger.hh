@@ -40,6 +40,7 @@ protected:
   G4UIcmdWith3VectorAndUnit* fPDC2PosCmd;
 
   G4UIdirectory* fDumpDirectory;
+  G4UIcmdWithABool* fSetDumpCmd;
   G4UIcmdWithADoubleAndUnit* fDumpAngleCmd;
   G4UIcmdWith3VectorAndUnit* fDumpPosCmd;
 

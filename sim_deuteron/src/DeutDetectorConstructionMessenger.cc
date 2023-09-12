@@ -96,6 +96,11 @@ DeutDetectorConstructionMessenger::DeutDetectorConstructionMessenger(DeutDetecto
   fDumpDirectory = new G4UIdirectory("/samurai/geometry/Dump/");
   fDumpDirectory->SetGuidance("Modification Commands for the Dump");
 
+  fSetDumpCmd = new G4UIcmdWithABool("/samurai/geometry/Dump/SetDump",this);
+  fSetDumpCmd->SetGuidance("Define Dump");
+  fSetDumpCmd->SetParameterName("SetDump",true);
+  fSetDumpCmd->SetDefaultValue(false);
+
   fDumpAngleCmd = new G4UIcmdWithADoubleAndUnit("/samurai/geometry/Dump/Angle",this);
   fDumpAngleCmd->SetGuidance("Set Angle of the Beam Dump");
   fDumpAngleCmd->SetGuidance("  39.3 deg (default)");
@@ -172,6 +177,9 @@ void DeutDetectorConstructionMessenger::SetNewValue(G4UIcommand* command,
 
   }else if ( command == fPDC2PosCmd ){
     fDetectorConstruction->SetPDC2Pos(fPDC2PosCmd->GetNew3VectorValue(newValue));
+
+  }else if ( command == fSetDumpCmd ){
+    fDetectorConstruction->SetDump(fSetDumpCmd->GetNewBoolValue(newValue));
 
   }else if ( command == fDumpAngleCmd ){
     fDetectorConstruction->SetDumpAngle(fDumpAngleCmd->GetNewDoubleValue(newValue));

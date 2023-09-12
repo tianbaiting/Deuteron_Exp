@@ -23,8 +23,9 @@ class DeutSteppingAction : public G4UserSteppingAction
     void UserSteppingAction(const G4Step*) override;
 
     inline void SetTargetAngleExp(G4double angle)  { fTargetAngleExp = angle; }
-    inline G4double GetTargetAngle() { return fTargetAngle; }
-    inline G4ThreeVector GetTargetPos() { return fTargetPos; }
+    inline G4double GetTargetAngle() const { return fTargetAngle; }
+    inline G4ThreeVector GetTargetPos() const { return fTargetPos; }
+    inline G4double GetAngleDifference() const {return fAngleDifference;}
 
   private:
     G4ThreeVector fTargetPos;    // Target position in laboratory frame

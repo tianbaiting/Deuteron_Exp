@@ -45,10 +45,12 @@ public:
   void SetTarget(G4bool tf){fSetTarget = tf;}
   void SetTargetMat(G4String mat){fTargetMat = mat;}
   void SetTargetSize(G4ThreeVector size){fTargetSize = size;}
+  void SetDump(G4bool tf){fSetDump = tf;}
                
 private:
   G4bool fFillAir;
   G4bool fSetTarget;
+  G4bool fSetDump;
 
   DeutDetectorConstructionMessenger *fDetectorConstructionMessenger;
 

@@ -42,7 +42,7 @@
 #include "G4StepLimiterPhysics.hh"
 #include "DeutSteppingAction.hh"
 #include "DeutTrackingAction.hh"
-#include "PrimaryGeneratorActionBasic.hh"
+#include "DeutPrimaryGeneratorAction.hh"
 
 #include <fstream>
 #include <string>
@@ -50,7 +50,8 @@
 //______________________________________________________________________________
 DeutDetectorConstruction::DeutDetectorConstruction() 
   :
-  fFillAir(false), fSetTarget(false), fTargetMat("empty")
+  fFillAir{false}, fSetTarget{false}, fSetDump{false}, fTargetMat{"empty"},
+  fTargetAngle{0}, fTargetPos{0,0,0}, fTargetSize{50,50,5}
   // Otherwise they'd be initialized randomly
 {
   G4cout << "Constructor of DeutDetectorConstruction" << G4endl;
@@ -96,47 +97,52 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
   else {
     TargetMaterial = WorldMaterial;
     G4ExceptionDescription ed;
-    ed << "The target material \"" << fTargetMat << "\" is invalid, using empty target"; 
-    G4Exception("DeutDetectorConstruction::Construct()", "material", JustWarning, ed);
+    ed << "The target material \"" << fTargetMat 
+       << "\" is invalid, using empty target"; 
+    G4Exception(
+      "DeutDetectorConstruction::Construct()", 
+      "material", JustWarning, ed
+    );
   }
 
-  //------------------------------------------------------ volumes
+  //--------------------------------- volumes ----------------------------------
 
-  //------------------------------ experimental hall (world volume)
-  //------------------------------ beam line along z axis
+  //------------------- experimental hall (world volume) -------------------
+  //------------------ beam line along z axis
 
   G4double expHall_x = 7.0*m;
   G4double expHall_y = 5*0.5*m;
   G4double expHall_z = 10.0*m;
 
-  G4Box* experimentalHall_box
-    = new G4Box("expHall_box",expHall_x,expHall_y,expHall_z);
+  G4Box* expHall_box
+    = new G4Box{"expHall_box", expHall_x, expHall_y, expHall_z};
 
-  G4LogicalVolume *experimentalHall_log 
-    = new G4LogicalVolume(experimentalHall_box,WorldMaterial,"expHall_log");
+  G4LogicalVolume *expHall_log 
+    = new G4LogicalVolume{expHall_box, WorldMaterial, "expHall_log"};
 
-  G4VPhysicalVolume *experimentalHall_phys
-    = new G4PVPlacement(0,G4ThreeVector(),experimentalHall_log,"expHall",0,false,0);
+  G4VPhysicalVolume *expHall_phys
+    = new G4PVPlacement{0, {0,0,0}, expHall_log, "expHall", 0, false, 0};
 
   // Make experimental hall invisible 
-  experimentalHall_log->SetVisAttributes(new G4VisAttributes{false});
+  expHall_log->SetVisAttributes(new G4VisAttributes{false});
 
-  //------------------------------ SAMURAI Magnet ------------------------------
-  //------------------------------ yoke
+  //---------------------------- SAMURAI Magnet ----------------------------
+  //---------------------------- yoke
   fDipoleConstruction->ConstructSub();
-  fDipoleConstruction->PutSAMURAIMagnet(experimentalHall_log);
+  fDipoleConstruction->PutSAMURAIMagnet(expHall_log);
 
   G4SDManager *SDMan = G4SDManager::GetSDMpointer();
 
   // prepare parameter for target and PDC positions
-  SimDataManager *simDataManager = SimDataManager::GetSimDataManager();
-  TFragSimParameter *frag_prm = (TFragSimParameter*)simDataManager->FindParameter("FragParameter");
+  auto *simDataManager = SimDataManager::GetSimDataManager();
+  auto *frag_prm = (TFragSimParameter*)simDataManager \
+                   ->FindParameter("FragParameter");
   if (frag_prm==0) {
     frag_prm = new TFragSimParameter("FragParameter");
     simDataManager->AddParameter(frag_prm);
   }
 
-  //--------------------------------------- Beam Line ---------------------------------------------------
+  //------------------------------- Beam Line ----------------------------------
   //------------------------------ Target
 
   if (fSetTarget) {
@@ -144,20 +150,33 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
       "tgt_box",
 			fTargetSize.x()*0.5*mm,
 			fTargetSize.y()*0.5*mm,
-			fTargetSize.z()*0.5*mm };
-    G4LogicalVolume *LogicTarget = new G4LogicalVolume {tgt_box, TargetMaterial, "target_log"};
-    G4LogicalVolume *LogicTargetSD = new G4LogicalVolume {tgt_box, TargetMaterial, "targetSD_log"};
-    new G4PVPlacement {0, G4ThreeVector{0,0,0}, LogicTargetSD, "Target_SD", LogicTarget, false, 0};
+			fTargetSize.z()*0.5*mm
+    };
 
-    G4RotationMatrix target_rm; target_rm.rotateY(-fTargetAngle);
-    new G4PVPlacement {G4Transform3D(target_rm, fTargetPos), LogicTarget, "Target", 
-                       experimentalHall_log, false, 0, true};
+    auto *LogicTarget = 
+      new G4LogicalVolume {tgt_box, TargetMaterial, "target_log"};
+    auto *LogicTargetSD = 
+      new G4LogicalVolume {tgt_box, TargetMaterial, "targetSD_log"};
+
+    auto rm = new G4RotationMatrix;
+    new G4PVPlacement {
+      rm, {0,0,0}, LogicTargetSD, "Target_SD", 
+      LogicTarget, false, 0, false
+    };
+
+    rm->rotateY(-fTargetAngle);
+    new G4PVPlacement {
+      rm, fTargetPos, LogicTarget, "Target", 
+      expHall_log, false, 0, true
+    };
+    delete rm;
+
     frag_prm->fTargetPosition.SetXYZ(
       fTargetPos.x()/mm, 
       fTargetPos.y()/mm, 
       fTargetPos.z()/mm
     );
-    frag_prm->fTargetAngle = -fTargetAngle;
+    frag_prm->fTargetAngle = fTargetAngle;
     frag_prm->fTargetThickness = fTargetSize.z();
 
     if (fTargetSD==0){
@@ -169,7 +188,7 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
 
   //------------------------------ NEBULA
   fNEBULAConstruction->ConstructSub();
-  fNEBULAConstruction->PutNEBULA(experimentalHall_log);
+  fNEBULAConstruction->PutNEBULA(expHall_log);
 
   // Sensitive Detector
   if (fNEBULASD==0){
@@ -198,14 +217,15 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
   }
   fPDCConstruction->GetActiveVolume()->SetSensitiveDetector(fPDCSD);
   
-  G4double pdc_angle = -fPDCAngle;// SAMURAI def. (clockwise)-> Geant def. (counterclockwise)
+  // SAMURAI def. (clockwise)-> Geant def. (counterclockwise)
+  G4double pdc_angle = -fPDCAngle;
   frag_prm->fPDCAngle = pdc_angle;
 
   //------------------------------ PDC1
   G4RotationMatrix pdc1_rm; pdc1_rm.rotateY(pdc_angle);
   G4ThreeVector pdc1_pos_lab{fPDC1Pos}; pdc1_pos_lab.rotateY(pdc_angle);
   G4Transform3D pdc1_trans{pdc1_rm, pdc1_pos_lab};
-  new G4PVPlacement{pdc1_trans, pdc_log, "PDC1", experimentalHall_log, false, 0, true};
+  new G4PVPlacement{pdc1_trans, pdc_log, "PDC1", expHall_log, false, 0};
 
   frag_prm->fPDC1Position.SetXYZ(
     fPDC1Pos.x()/mm, 
@@ -217,7 +237,7 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
   G4RotationMatrix pdc2_rm; pdc2_rm.rotateY(pdc_angle);
   G4ThreeVector pdc2_pos_lab{fPDC2Pos}; pdc2_pos_lab.rotateY(pdc_angle);
   G4Transform3D pdc2_trans{pdc2_rm, pdc2_pos_lab};
-  new G4PVPlacement{pdc2_trans, pdc_log, "PDC2", experimentalHall_log, false, 1, true};
+  new G4PVPlacement{pdc2_trans, pdc_log, "PDC2", expHall_log, false, 1};
 
   frag_prm->fPDC2Position.SetXYZ(
     fPDC2Pos.x()/mm, 
@@ -228,27 +248,28 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
   //------------------------------ Beam Dump
   auto box_sol = new G4Box{"Box", 2.5*m/2, 2.5*m/2, 3*m/2};
   auto opening_sol = new G4Box{"Opening", 34*cm/2, 38*cm/2, 120*cm/2};
-  auto opening_pos = new G4Translate3D{0, 25*cm, -90*cm};
-  auto dump_sol = new G4SubtractionSolid{"Dump", box_sol, opening_sol, *opening_pos};
+  G4Translate3D opening_pos = {0, 25*cm, -90*cm};
+  auto dump_sol = new G4SubtractionSolid{"Dump", box_sol, opening_sol, opening_pos};
 
   auto dump_log = new G4LogicalVolume{dump_sol, Water, "Dump"};
-  auto dump_colour = new G4Colour{0, 1, 1, 0.7};
-  auto dump_vis = new G4VisAttributes{*dump_colour};
-  dump_vis->SetForceSolid(true);
+  G4VisAttributes dump_vis = G4Colour{0, 1, 1, 0.7};
+  dump_vis.SetForceSolid(true);
   dump_log->SetVisAttributes(dump_vis);
 
-  G4RotationMatrix dump_rm; dump_rm.rotateY(-fDumpAngle);
-  G4ThreeVector dump_pos_lab{fDumpPos}; dump_pos_lab.rotateY(-fDumpAngle);
-  G4Transform3D dump_trans{dump_rm, dump_pos_lab};
-  new G4PVPlacement{dump_trans, dump_log, "Dump", experimentalHall_log, false, 0};
-  frag_prm->fDumpAngle = -fDumpAngle;
-  frag_prm->fDumpPosition.SetXYZ(
-    fDumpPos.x()/mm, 
-    fDumpPos.y()/mm, 
-    fDumpPos.z()/mm
-  );
+  if (fSetDump) {
+    G4RotationMatrix dump_rm; dump_rm.rotateY(-fDumpAngle);
+    G4ThreeVector dump_pos_lab{fDumpPos}; dump_pos_lab.rotateY(-fDumpAngle);
+    G4Transform3D dump_trans{dump_rm, dump_pos_lab};
+    new G4PVPlacement{dump_trans, dump_log, "Dump", expHall_log, false, 0};
+    frag_prm->fDumpAngle = -fDumpAngle;
+    frag_prm->fDumpPosition.SetXYZ(
+      fDumpPos.x()/mm, 
+      fDumpPos.y()/mm, 
+      fDumpPos.z()/mm
+    );
+  }
 
-  return experimentalHall_phys;
+  return expHall_phys;
 }
 //______________________________________________________________________________
 void DeutDetectorConstruction::SetTargetPos(G4ThreeVector pos)
@@ -323,14 +344,14 @@ void DeutDetectorConstruction::UpdateGeometry()
 //______________________________________________________________________________
 void DeutDetectorConstruction::AutoConfigGeometry(G4String outputMacroFile)
 {
+  SetTarget(true), SetFillAir(false), UpdateGeometry();
+  
   G4RunManager* runManager = G4RunManager::GetRunManager();
   auto steppingAction = new DeutSteppingAction;
   auto trackingAction = new DeutTrackingAction;
   runManager->SetUserAction(steppingAction);
   runManager->SetUserAction(trackingAction);
-  
-  auto primaryGen = (PrimaryGeneratorActionBasic*)runManager \
-                    ->GetUserPrimaryGeneratorAction();
+  runManager->Initialize();
 
   auto logicalVolumeStore = G4LogicalVolumeStore::GetInstance();
   G4LogicalVolume* expHall_log = 
@@ -342,14 +363,13 @@ void DeutDetectorConstruction::AutoConfigGeometry(G4String outputMacroFile)
   auto stepLimitPhys = new G4StepLimiterPhysics;
   fModularPhysicsList->RegisterPhysics(stepLimitPhys);
 
-  auto geoManager = G4GeometryManager::GetInstance();
-  if (geoManager->IsGeometryClosed()) geoManager->OpenGeometry();
-  SetTarget(false), SetFillAir(false);
-  geoManager->CloseGeometry();
+  // Do not put the particle gun at the target position
+  auto action = runManager->GetUserPrimaryGeneratorAction();
+  ((DeutPrimaryGeneratorAction*)action)->SetUseTargetParameters(false);
 
-  runManager->Initialize();
+  auto primaryGen = (PrimaryGeneratorActionBasic*)runManager \
+                   ->GetUserPrimaryGeneratorAction();
 
-  steppingAction->SetTargetAngleExp(fTargetAngle);
   primaryGen->SetBeamParticle("deuteron");
   primaryGen->SetBeamType("Pencil");
   primaryGen->SetBeamPosition(G4ThreeVector{0, 0, -5000});
@@ -448,8 +468,5 @@ void DeutDetectorConstruction::AutoConfigGeometry(G4String outputMacroFile)
   }
   geoFile.close();
   output.close();
-
-  delete steppingAction;
-  delete trackingAction;
 }
 //______________________________________________________________________________
