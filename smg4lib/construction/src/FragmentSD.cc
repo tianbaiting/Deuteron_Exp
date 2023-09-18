@@ -55,15 +55,16 @@ G4bool FragmentSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
   G4TouchableHistory* theTouchable = (G4TouchableHistory*)(preStepPoint->GetTouchable());
   
   // GetVolume(G4int depth = 0), 0 means the sensitive area, 1 means the detector itself
-  G4VPhysicalVolume* physicalVolume = theTouchable->GetVolume(1); 
-  const G4String& detectorName = physicalVolume->GetName();
+  const G4String& detectorName = theTouchable->GetVolume(1)->GetLogicalVolume()->GetName();
+  const G4int& detectorID = theTouchable->GetVolume(1)->GetCopyNo();
+  const G4String& moduleName = theTouchable->GetVolume(0)->GetLogicalVolume()->GetName();
   const Double_t mass_MeV = particleDefinition->GetPDGMass()/MeV;
 
   // store only primary particle with Z!=0
   if(parentid == 0 && aStep->GetTrack()->GetDefinition()->GetPDGCharge() != 0.){
 
     Int_t nstep = SimDataArray->GetEntries();
-    new ((*SimDataArray)[nstep]) TSimData();
+    new ((*SimDataArray)[nstep]) TSimData;
     TSimData* data = (TSimData*)SimDataArray->At(nstep);
 
     //data->fPrimaryParticleID = trackid - 1;
@@ -75,6 +76,8 @@ G4bool FragmentSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     data->fPDGCode = pdgCode;
     data->fParticleName = particleName;
     data->fDetectorName = detectorName;
+    data->fID = detectorID;
+    data->fModuleName = moduleName;
     data->fCharge = dynamicParticle->GetCharge()/eplus;
     data->fMass = mass_MeV;
     data->fPreMomentum.SetPxPyPzE(preMomentum.x()/MeV,

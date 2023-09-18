@@ -99,17 +99,25 @@ G4LogicalVolume* PDCConstruction::ConstructSub()
   G4double PDCenc_y = 800 * 0.5 *mm;
   G4double PDCenc_z = 190 * 0.5 *mm;
   G4Box* PDCenc_box = new G4Box("PDCenc_box",PDCenc_x,PDCenc_y,PDCenc_z);
-  G4LogicalVolume *PDCenc_log = new G4LogicalVolume(PDCenc_box,fPDCMaterial,"PDCenc_log");
+  G4LogicalVolume *PDCenc_log = new G4LogicalVolume(PDCenc_box,fPDCMaterial,"PDC");
 
-  // active area
-  G4double PDC_x = 1680*0.5*mm;// =window size *0.5
-  G4double PDC_y = 780*0.5*mm; // =window size *0.5
-  G4double PDCc_z = 16*mm;// volume enclosed by cathodes
-  G4Box* PDCc_box = new G4Box("PDCc_box",PDC_x,PDC_y,PDCc_z);
-  fPDCActive_log = new G4LogicalVolume(PDCc_box,fPDCMaterial,"PDCc_log");
-  new G4PVPlacement(0,G4ThreeVector(0,0,0),fPDCActive_log,"PDC_SD",PDCenc_log,false,0);
+  // Active area for layer U
+  G4Box* U_box = new G4Box{"U_box", 840, 390, 4};
+  fLayerU = new G4LogicalVolume{U_box, fPDCMaterial, "U"};
+  fLayerU->SetVisAttributes(false);
+  new G4PVPlacement{0, {0,0,-12}, fLayerU, "PDCSD_U", PDCenc_log, false, 0};
 
-  fPDCActive_log->SetVisAttributes(new G4VisAttributes{false});
+  // Active area for layer X
+  G4Box* X_box = new G4Box{"X_box", 840, 390, 8};
+  fLayerX = new G4LogicalVolume{X_box, fPDCMaterial, "X"};
+  fLayerX->SetVisAttributes(false);
+  new G4PVPlacement{0, {0,0,0}, fLayerX, "PDCSD_X", PDCenc_log, false, 0};
+
+  // Active area for layer V
+  G4Box* V_box = new G4Box{"V_box", 840, 390, 8};
+  fLayerV = new G4LogicalVolume{V_box, fPDCMaterial, "V"};
+  fLayerV->SetVisAttributes(false);
+  new G4PVPlacement{0, {0,0,12}, fLayerV, "PDCSD_V", PDCenc_log, false, 0};
 
   return PDCenc_log;
 }

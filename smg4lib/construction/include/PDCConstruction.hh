@@ -26,7 +26,7 @@ public:
   void SetAngle(G4double val){fAngle = val;}
   G4double GetAngle(){return fAngle;}
 
-  G4LogicalVolume *GetActiveVolume(){return fPDCActive_log;}
+  G4LogicalVolume *fLayerU, *fLayerX, *fLayerV;
 
 protected:
   G4ThreeVector fPosition;
@@ -35,8 +35,6 @@ protected:
   G4Material* fWorldMaterial;
   G4Material* fVacuumMaterial;
   G4Material* fPDCMaterial;
-
-  G4LogicalVolume* fPDCActive_log;
 };
 
 #endif

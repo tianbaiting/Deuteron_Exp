@@ -18,7 +18,7 @@ public:
   TVector3 fTargetPosition;   // position at laboratory coordinate in mm
   Double_t fTargetAngle;      // angle (counterclockwise) in rad
 
-  Double_t fPDCAngle;         // PDC angle (counterclockwise) in rad
+  Double_t fPDCAngle;         // PDC angle (clockwise) in rad
   TVector3 fPDC1Position;     // position at rotated coordinate in mm
   TVector3 fPDC2Position;     // position at rotated coordinate in mm
 

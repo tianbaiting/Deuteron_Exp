@@ -71,7 +71,9 @@ private:
   G4ThreeVector fDumpPos;     // position at rotated coordinate in mm
 
   G4VSensitiveDetector* fTargetSD = 0; // reserved for track reconstruction
-  G4VSensitiveDetector* fPDCSD;
+  G4VSensitiveDetector* fPDCSD_U = 0;
+  G4VSensitiveDetector* fPDCSD_X = 0;
+  G4VSensitiveDetector* fPDCSD_V = 0;
   G4VSensitiveDetector* fNEBULASD;
 
   G4String fInputMacroFile;

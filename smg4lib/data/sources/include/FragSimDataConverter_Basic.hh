@@ -26,8 +26,11 @@ private:
   TClonesArray *fFragSimDataArray;
 
   Double_t fTargetX, fTargetY, fTargetTheta, fTargetPhi, fTargetEnergy;
-  Double_t fPDC1X, fPDC1Y, fPDC2X, fPDC2Y;
+  Double_t fPDC1U, fPDC1X, fPDC1V, fPDC2U, fPDC2X, fPDC2V;
+  Int_t    fPDCTrackNo; // Number of protons detected
   Bool_t   fOK_Target, fOK_PDC1, fOK_PDC2;
+
+  TVector3 LabToPDC(TVector3);
 
 };
 #endif

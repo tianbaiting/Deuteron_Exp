@@ -208,18 +208,27 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
 
   //------------------------------ PDCs 
   auto pdc_log = fPDCConstruction->ConstructSub();
-  auto pdc_vis = new G4VisAttributes(G4Colour::Magenta());
-  pdc_log->SetVisAttributes(pdc_vis);
+  pdc_log->SetVisAttributes(G4Colour::Magenta());
 
-  if (fPDCSD==0){
-    fPDCSD = new FragmentSD("/PDC");
-    SDMan->AddNewDetector(fPDCSD);
+  if (fPDCSD_U==0){
+    fPDCSD_U = new FragmentSD("/PDC_U");
+    SDMan->AddNewDetector(fPDCSD_U);
   }
-  fPDCConstruction->GetActiveVolume()->SetSensitiveDetector(fPDCSD);
+  if (fPDCSD_X==0){
+    fPDCSD_X = new FragmentSD("/PDC_X");
+    SDMan->AddNewDetector(fPDCSD_X);
+  }
+  if (fPDCSD_V==0){
+    fPDCSD_V = new FragmentSD("/PDC_V");
+    SDMan->AddNewDetector(fPDCSD_V);
+  }
+  fPDCConstruction->fLayerU->SetSensitiveDetector(fPDCSD_U);
+  fPDCConstruction->fLayerX->SetSensitiveDetector(fPDCSD_X);
+  fPDCConstruction->fLayerV->SetSensitiveDetector(fPDCSD_V);
   
   // SAMURAI def. (clockwise)-> Geant def. (counterclockwise)
   G4double pdc_angle = -fPDCAngle;
-  frag_prm->fPDCAngle = pdc_angle;
+  frag_prm->fPDCAngle = fPDCAngle;
 
   //------------------------------ PDC1
   G4RotationMatrix pdc1_rm; pdc1_rm.rotateY(pdc_angle);
@@ -380,7 +389,7 @@ void DeutDetectorConstruction::AutoConfigGeometry(G4String outputMacroFile)
 
   primaryGen->SetBeamParticle("proton");
   primaryGen->SetBeamPosition(steppingAction->GetTargetPos());
-  primaryGen->SetBeamAngleX(- steppingAction->GetTargetAngle());
+  primaryGen->SetBeamAngleX(- steppingAction->GetTargetAngle() + M_PI/36);
   runManager->BeamOn(1);
 
   using namespace std;
