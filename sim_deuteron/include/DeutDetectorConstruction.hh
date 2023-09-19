@@ -61,7 +61,7 @@ private:
   G4String      fTargetMat;
   G4ThreeVector fTargetPos;   // position at laboratory coordinate in mm
   G4ThreeVector fTargetSize;
-  G4double      fTargetAngle; // angle (counterclockwise) in rad
+  G4double      fTargetAngle; // angle (clockwise) in rad
 
   G4double      fPDCAngle;    // angle (clockwise) in rad
   G4ThreeVector fPDC1Pos;     // position at rotated coordinate in mm

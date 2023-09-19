@@ -44,14 +44,11 @@
 #include "DeutTrackingAction.hh"
 #include "DeutPrimaryGeneratorAction.hh"
 
-#include <fstream>
-#include <string>
-
 //______________________________________________________________________________
 DeutDetectorConstruction::DeutDetectorConstruction() 
   :
   fFillAir{false}, fSetTarget{false}, fSetDump{false}, fTargetMat{"empty"},
-  fTargetAngle{0}, fTargetPos{0,0,0}, fTargetSize{50,50,5}
+  fTargetPos{0,0,0}, fTargetSize{50,50,5}, fTargetAngle{0}
   // Otherwise they'd be initialized randomly
 {
   G4cout << "Constructor of DeutDetectorConstruction" << G4endl;
@@ -171,20 +168,20 @@ G4VPhysicalVolume* DeutDetectorConstruction::Construct()
     };
     delete rm;
 
-    frag_prm->fTargetPosition.SetXYZ(
-      fTargetPos.x()/mm, 
-      fTargetPos.y()/mm, 
-      fTargetPos.z()/mm
-    );
-    frag_prm->fTargetAngle = fTargetAngle;
-    frag_prm->fTargetThickness = fTargetSize.z();
-
     if (fTargetSD==0){
       fTargetSD = new FragmentSD("/Target");
       SDMan->AddNewDetector(fTargetSD);
     }
     LogicTargetSD->SetSensitiveDetector(fTargetSD);
   }
+
+  frag_prm->fTargetPosition.SetXYZ(
+    fTargetPos.x()/mm, 
+    fTargetPos.y()/mm, 
+    fTargetPos.z()/mm
+  );
+  frag_prm->fTargetAngle = fTargetAngle;
+  frag_prm->fTargetThickness = fTargetSize.z();
 
   //------------------------------ NEBULA
   fNEBULAConstruction->ConstructSub();

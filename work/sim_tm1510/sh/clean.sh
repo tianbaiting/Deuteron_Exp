@@ -1,3 +1,0 @@
-rm -f g4_??.eps
-rm -f g4_??.prim
-rm -f g4_??.wrl
