@@ -34,9 +34,8 @@ protected:
   bool fIncludeResolution;
 
   TNEBULASimParameter *fNEBULASimParameter;
-  TClonesArray *fNEBULASimDataArray;
-
-  TClonesArray *fNEBULAPlaArray;
+  TClonesArray *fNEBULASimDataArray;  // Each element is a hit
+  TClonesArray *fNEBULAPlaArray;      // Each element is a module with hit
 
   class tmp_data{
   public:

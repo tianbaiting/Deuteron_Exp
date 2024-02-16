@@ -112,7 +112,8 @@ int FragSimDataConverter_Basic::ConvertSimData()
       auto& stepNo = stepNos[data->fID][layer]; // fID: 0 for PDC1, 1 for PDC2
       auto& position = positions[data->fID][layer];
 
-      // Note: if `layer` do not exist, `stepNo` will be initialized as {0,0}.
+      // Find the first and last step in each layer
+      // Note: if `layer` was not hit, `stepNo` would be initialized as {0,0}.
       if (stepNo[0] == 0 && stepNo[1] == 0) {
         stepNo = {data->fStepNo, data->fStepNo};
         position = {data->fPrePosition, data->fPostPosition};

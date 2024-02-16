@@ -74,7 +74,7 @@ private:
   G4VSensitiveDetector* fPDCSD_U = 0;
   G4VSensitiveDetector* fPDCSD_X = 0;
   G4VSensitiveDetector* fPDCSD_V = 0;
-  G4VSensitiveDetector* fNEBULASD;
+  G4VSensitiveDetector* fNEBULASD = 0;
 
   G4String fInputMacroFile;
   G4VModularPhysicsList* fModularPhysicsList;

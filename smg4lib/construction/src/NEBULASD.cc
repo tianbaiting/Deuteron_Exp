@@ -68,8 +68,8 @@ G4bool NEBULASD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 
   if((energyDeposit_MeV>0.) && (aStep->GetTrack()->GetDefinition()->GetPDGCharge() != 0.)){
 
-    Int_t nstep = SimDataArray->GetEntries();
-    new ((*SimDataArray)[nstep]) TSimData();
+    Int_t nstep = SimDataArray->GetEntriesFast();
+    new ((*SimDataArray)[nstep]) TSimData;
     TSimData* data = (TSimData*)SimDataArray->At(nstep);
 
     //data->fPrimaryParticleID = parentid - 1;
