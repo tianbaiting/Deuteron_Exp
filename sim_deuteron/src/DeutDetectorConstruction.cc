@@ -47,11 +47,11 @@
 //______________________________________________________________________________
 DeutDetectorConstruction::DeutDetectorConstruction() 
   :
-  fFillAir{false}, fSetTarget{false}, fSetDump{false}, fTargetMat{"empty"},
+  fFillAir{false}, fSetTarget{true}, fSetDump{true}, fTargetMat{"Sn"},
   fTargetPos{0,0,0}, fTargetSize{50,50,5}, fTargetAngle{0}
   // Otherwise they'd be initialized randomly
 {
-  G4cout << "Constructor of DeutDetectorConstruction" << G4endl;
+  G4cout << "Constructor of DeutDetectorConstruction"  << G4endl;
   fDetectorConstructionMessenger = new DeutDetectorConstructionMessenger(this);
 
   fDipoleConstruction = new DipoleConstruction();
@@ -295,6 +295,7 @@ void DeutDetectorConstruction::SetTargetAngle(G4double angle)
 	   <<fTargetAngle/deg<<" deg  "
 	   <<std::endl;
 }
+
 //______________________________________________________________________________
 void DeutDetectorConstruction::SetPDCAngle(G4double angle)
 {

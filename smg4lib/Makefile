@@ -1,3 +1,5 @@
+CC			 = $(shell root-config --cc)
+CXX			 = $(shell root-config --cxx)
 
 .PHONY: data physics construction action
 

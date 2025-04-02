@@ -9,8 +9,8 @@ CC			 = $(shell root-config --cc)
 CXX			 = $(shell root-config --cxx)
 CPPFLAGS	+= -Iinclude -I$(G4SMLIBDIR)/include -I$(TARTSYS)/include -I$(G4INCLUDE) \
 			   -I$(ROOTSYS)/include
-CXXFLAGS	+= -O3 -fPIC -std=c++20
-LDFLAGS		+= $(shell root-config --ldflags) $(shell geant4-config --cflags)
+CXXFLAGS	+= -O3 -fPIC
+LDFLAGS		+= $(shell root-config --ldflags) $(filter-out std=%,$(shell geant4-config --cflags))
 ROOTLIBS	 = $(shell root-config --glibs) -ltbb
 G4LIBS		 = $(shell geant4-config --libs)
 TARTLIBS	 = -L$(TARTSYS)/lib -lanasamurai -lanabrips -lanacore -lXMLParser

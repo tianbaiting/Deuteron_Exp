@@ -1,0 +1,18 @@
+*.so
+*.o
+*.la
+*.d
+*_dict*
+bin/
+tmp/
+lib/
+.libs/
+.deps/
+*.cache/
+.vscode/
+*.pdf
+*.png
+*.root
+*.zip
+# .gitignore
+# setup.sh
